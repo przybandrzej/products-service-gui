@@ -1,0 +1,23 @@
+<div fxFlexFill fxLayout="column" fxLayoutGap="4px">
+  <mat-toolbar
+    fxFlex="none"
+    class="mat-elevation-z6 app-navbar"
+    color="primary"
+  >
+    <div fxLayoutAlign="start center" fxFlex="50%">
+      <span class="link">Products Service</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayoutAlign="end center"
+      fxFlex="50%"
+      fxLayoutGap="15px"
+    >
+      <mat-icon class="icon_button" color="blue">power_settings_new</mat-icon>
+    </div>
+  </mat-toolbar>
+
+  <div fxFlex class="router-outlet">
+    <router-outlet></router-outlet>
+  </div>
+</div>

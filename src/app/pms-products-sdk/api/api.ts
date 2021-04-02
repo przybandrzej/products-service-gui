@@ -1,0 +1,15 @@
+export * from './attributeEntryResource.service';
+import { AttributeEntryResourceService } from './attributeEntryResource.service';
+export * from './attributeResource.service';
+import { AttributeResourceService } from './attributeResource.service';
+export * from './brandResource.service';
+import { BrandResourceService } from './brandResource.service';
+export * from './categoryResource.service';
+import { CategoryResourceService } from './categoryResource.service';
+export * from './imageUrlResource.service';
+import { ImageUrlResourceService } from './imageUrlResource.service';
+export * from './productResource.service';
+import { ProductResourceService } from './productResource.service';
+export * from './shopResource.service';
+import { ShopResourceService } from './shopResource.service';
+export const APIS = [AttributeEntryResourceService, AttributeResourceService, BrandResourceService, CategoryResourceService, ImageUrlResourceService, ProductResourceService, ShopResourceService];
