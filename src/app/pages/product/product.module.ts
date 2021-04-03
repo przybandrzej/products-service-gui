@@ -1,3 +1,4 @@
+import { SharedModule } from './../../shared/shared.module';
 import { Configuration, ApiModule } from './../../pms-products-sdk/';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,7 +16,11 @@ export function getAPIConfiguration() {
 }
 
 @NgModule({
-  declarations: [ProductCardComponent, ProductCardImageComponent, ProductAttributeComponent],
+  declarations: [
+    ProductCardComponent,
+    ProductCardImageComponent,
+    ProductAttributeComponent,
+  ],
   exports: [ProductCardComponent],
   imports: [
     CommonModule,
@@ -24,6 +29,7 @@ export function getAPIConfiguration() {
     BrowserAnimationsModule,
     HttpClientModule,
     ApiModule.forRoot(getAPIConfiguration),
+    SharedModule,
   ],
 })
 export class ProductModule {}
