@@ -1,0 +1,40 @@
+<div
+  class="product-card"
+  [style.height]="sizeConfig.height"
+  [style.width]="sizeConfig.width"
+  [style.min-height]="sizeConfig.height"
+  [style.min-width]="sizeConfig.width"
+  [style.max-height]="sizeConfig.height"
+  [style.max-width]="sizeConfig.width"
+>
+  <mat-card (click)="select($event)" fxFlex>
+    <mat-card-header fxLayout="column" fxLayoutAlign="start stretch">
+      <mat-card-title>{{ product?.name }}</mat-card-title>
+      <app-product-card-image></app-product-card-image>
+      <mat-card-subtitle>{{ brand?.name }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-chip-list>
+        <mat-chip [style.background-color]="'#ffcc00'" selected>{{
+          product?.price
+        }}</mat-chip>
+        <mat-chip
+          *ngFor="let category of product?.categories"
+          [style.background-color]="'#ff0000'"
+          selected
+          >{{ category?.name }}</mat-chip
+        >
+        <mat-chip
+          *ngFor="let shop of product?.shops"
+          [style.background-color]="'#ff66ff'"
+          selected
+          >{{ shop?.name }}</mat-chip
+        >
+      </mat-chip-list>
+      <app-product-attribute
+        *ngFor="let attr of attributes"
+        [attribute]="attr"
+      ></app-product-attribute>
+    </mat-card-content>
+  </mat-card>
+</div>

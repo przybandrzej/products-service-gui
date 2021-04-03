@@ -29,6 +29,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexModule } from '@angular/flex-layout';
+import { MatChipsModule } from '@angular/material/chips';
 
 const MODULES = [
   MatIconModule,
@@ -61,6 +62,7 @@ const MODULES = [
   FlexModule,
   ReactiveFormsModule,
   MatButtonToggleModule,
+  MatChipsModule,
 ];
 
 @NgModule({

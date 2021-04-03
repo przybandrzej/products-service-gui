@@ -1,3 +1,4 @@
+import { ProductModule } from './pages/product/product.module';
 import { MaterialModule } from './material.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -26,6 +27,7 @@ export function getAPIConfiguration() {
     HttpClientModule,
     FlexLayoutModule,
     ApiModule.forRoot(getAPIConfiguration),
+    ProductModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
