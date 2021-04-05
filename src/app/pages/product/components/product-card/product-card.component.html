@@ -1,40 +1,32 @@
-<div
-  class="product-card"
-  [style.height]="sizeConfig.height"
-  [style.width]="sizeConfig.width"
-  [style.min-height]="sizeConfig.height"
-  [style.min-width]="sizeConfig.width"
-  [style.max-height]="sizeConfig.height"
-  [style.max-width]="sizeConfig.width"
->
-  <mat-card (click)="select($event)" fxFlex>
-    <mat-card-header fxLayout="column" fxLayoutAlign="start stretch">
-      <mat-card-title>{{ product?.name }}</mat-card-title>
-      <app-product-card-image></app-product-card-image>
-      <mat-card-subtitle>{{ brand?.name }}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-chip-list>
-        <mat-chip [style.background-color]="'#ffcc00'" selected>{{
-          product?.price
-        }}</mat-chip>
-        <mat-chip
-          *ngFor="let category of product?.categories"
-          [style.background-color]="'#ff0000'"
-          selected
-          >{{ category?.name }}</mat-chip
+<div id="make-3D-space" fxLayout="column" class="product-card-dimen">
+  <div id="product-card" [onhoverClass]="'animate'" fxFlex="100%">
+    <div
+      id="product-front"
+      fxLayout="column"
+      fxLayoutAlign="start stretch"
+      fxFlex="100%"
+    >
+      <div class="image_container">
+        <img class="image" [src]="product.previewImageUrl" />
+        <div class="image_overlay"></div>
+        <div id="view_details" (click)="select($event)">View details</div>
+      </div>
+      <div class="stats">
+        <div
+          class="stats-container"
+          fxLayout="row"
+          fxLayoutAlign="space-between start"
         >
-        <mat-chip
-          *ngFor="let shop of product?.shops"
-          [style.background-color]="'#ff66ff'"
-          selected
-          >{{ shop?.name }}</mat-chip
-        >
-      </mat-chip-list>
-      <app-product-attribute
-        *ngFor="let attr of attributes"
-        [attribute]="attr"
-      ></app-product-attribute>
-    </mat-card-content>
-  </mat-card>
+          <span class="product_name">{{ product.name }}</span>
+          <div fxLayout="row" fxLayoutGap="4px">
+            <span class="product_price_currency">{{
+              product.currencySymbol
+            }}</span>
+            <span class="product_price">{{ product.price }}</span>
+          </div>
+        </div>
+        <p class="subtitle">{{ product.subtitle }}</p>
+      </div>
+    </div>
+  </div>
 </div>

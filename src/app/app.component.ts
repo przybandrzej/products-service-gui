@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService
-      .getProductUsingGET(1)
+      .getProductUsingGET(352)
       .subscribe((res) => (this.product = res));
   }
 }

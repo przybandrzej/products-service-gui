@@ -8,7 +8,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { environment } from 'src/environments/environment';
-import { ProductCardImageComponent } from './components/product-card-image/product-card-image.component';
 import { ProductAttributeComponent } from './components/product-attribute/product-attribute.component';
 
 export function getAPIConfiguration() {
@@ -16,11 +15,7 @@ export function getAPIConfiguration() {
 }
 
 @NgModule({
-  declarations: [
-    ProductCardComponent,
-    ProductCardImageComponent,
-    ProductAttributeComponent,
-  ],
+  declarations: [ProductCardComponent, ProductAttributeComponent],
   exports: [ProductCardComponent],
   imports: [
     CommonModule,

@@ -6,7 +6,7 @@ import { Directive, HostListener, ElementRef, Input } from '@angular/core';
 export class OnhoverClassDirective {
   constructor(public elementRef: ElementRef) {}
 
-  @Input('onhoverClass') hoverClass: string = '';
+  @Input('onhoverClass') onhoverClass: string = '';
 
   @HostListener('mouseenter') onMouseEnter() {
     this.update('add');
@@ -17,7 +17,7 @@ export class OnhoverClassDirective {
   }
 
   protected update(action: string): void {
-    this.hoverClass
+    this.onhoverClass
       .split(' ')
       .forEach((item) => this.elementRef.nativeElement.classList[action](item));
   }

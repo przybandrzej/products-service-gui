@@ -7,6 +7,7 @@ import { AttributeEntryResourceService } from './api/attributeEntryResource.serv
 import { AttributeResourceService } from './api/attributeResource.service';
 import { BrandResourceService } from './api/brandResource.service';
 import { CategoryResourceService } from './api/categoryResource.service';
+import { CurrencyResourceService } from './api/currencyResource.service';
 import { ImageUrlResourceService } from './api/imageUrlResource.service';
 import { ProductResourceService } from './api/productResource.service';
 import { ShopResourceService } from './api/shopResource.service';
@@ -20,6 +21,7 @@ import { ShopResourceService } from './api/shopResource.service';
     AttributeResourceService,
     BrandResourceService,
     CategoryResourceService,
+    CurrencyResourceService,
     ImageUrlResourceService,
     ProductResourceService,
     ShopResourceService ]

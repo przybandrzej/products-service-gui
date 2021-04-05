@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import { ProductModule } from './pages/product/product.module';
 import { MaterialModule } from './material.module';
 import { NgModule } from '@angular/core';

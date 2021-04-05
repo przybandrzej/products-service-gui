@@ -1,6 +1,3 @@
-import { ImageUrlDTO } from './../../../../pms-products-sdk/model/imageUrlDTO';
-import { ProductAttributeEntry } from './../../model/product-attribute-entry';
-import { BrandDTO } from './../../../../pms-products-sdk/model/brandDTO';
 import { ProductDTO } from './../../../../pms-products-sdk/model/productDTO';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
@@ -17,26 +14,6 @@ export class ProductCardComponent implements OnInit {
 
   public product: ProductDTO = {};
 
-  @Input('brand')
-  public set _brand(val: BrandDTO) {
-    this.brand = val;
-  }
-
-  public brand: BrandDTO = {};
-
-  @Input('productAttributes')
-  public set _attributes(val: ProductAttributeEntry[]) {
-    this.attributes = val;
-  }
-
-  public attributes: Array<ProductAttributeEntry> = [];
-
-  @Input('images')
-  public images: Array<ImageUrlDTO> = [];
-
-  @Input('size')
-  public sizeConfig: SizeConfig = {};
-
   @Output('productClicked')
   public clickedEvent: EventEmitter<void> = new EventEmitter();
 
@@ -48,9 +25,4 @@ export class ProductCardComponent implements OnInit {
     event.stopPropagation();
     this.clickedEvent.emit();
   }
-}
-
-export interface SizeConfig {
-  height?: string;
-  width?: string;
 }

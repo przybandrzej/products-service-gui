@@ -17,9 +17,15 @@ import { ShopDTO } from './shopDTO';
 export interface ProductDTO { 
     attributeEntries?: Array<AttributeEntryDTO>;
     brandId?: number;
+    brandName?: string;
     categories?: Array<CategoryDTO>;
+    currencyId?: number;
+    currencySymbol?: string;
     id?: number;
     name?: string;
+    previewImageId?: number;
+    previewImageUrl?: string;
     price?: number;
     shops?: Array<ShopDTO>;
+    subtitle?: string;
 }
