@@ -17,6 +17,12 @@ export class ProductCardComponent implements OnInit {
   @Output('productClicked')
   public clickedEvent: EventEmitter<void> = new EventEmitter();
 
+  @Output('mouseIn')
+  public mouseInEvent: EventEmitter<void> = new EventEmitter();
+
+  @Output('mouseOut')
+  public mouseOutEvent: EventEmitter<void> = new EventEmitter();
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -24,5 +30,15 @@ export class ProductCardComponent implements OnInit {
   public select(event: Event): void {
     event.stopPropagation();
     this.clickedEvent.emit();
+  }
+
+  public onMouseEnter(event: Event): void {
+    event.stopPropagation();
+    this.mouseInEvent.emit();
+  }
+
+  public onMouseLeave(event: Event): void {
+    event.stopPropagation();
+    this.mouseOutEvent.emit();
   }
 }

@@ -1,4 +1,10 @@
-<div id="make-3D-space" fxLayout="column" class="product-card-dimen">
+<div
+  id="make-3D-space"
+  fxLayout="column"
+  class="product-card-dimen"
+  (mouseenter)="onMouseEnter($event)"
+  (mouseleave)="onMouseLeave($event)"
+>
   <div id="product-card" [onhoverClass]="'animate'" fxFlex="100%">
     <div
       id="product-front"
