@@ -9,14 +9,23 @@ import { CommonModule } from '@angular/common';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { environment } from 'src/environments/environment';
 import { ProductAttributeComponent } from './components/product-attribute/product-attribute.component';
+import { ProductsPageComponent } from './components/products-page/products-page.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { ProductTooltipComponent } from './components/product-tooltip/product-tooltip.component';
 
 export function getAPIConfiguration() {
   return new Configuration({ basePath: environment.api_url });
 }
 
 @NgModule({
-  declarations: [ProductCardComponent, ProductAttributeComponent],
-  exports: [ProductCardComponent],
+  declarations: [
+    ProductCardComponent,
+    ProductAttributeComponent,
+    ProductsPageComponent,
+    ProductDetailsComponent,
+    ProductTooltipComponent,
+  ],
+  exports: [ProductsPageComponent],
   imports: [
     CommonModule,
     MaterialModule,

@@ -1,0 +1,20 @@
+<div fxFlex="100%" fxLayout="column">
+  <div
+    fxLayout="row wrap"
+    fxLayoutGap="10px grid"
+    fxLayoutAlign="space-between"
+  >
+    <div
+      *ngFor="let product of products"
+      #productCard
+      [class.hovered]="(hoveredProduct | async)?.id === product.id"
+    >
+      <app-product-card
+        [product]="product"
+        (productClicked)="openProductDetails(product)"
+        (mouseIn)="showPreview(product)"
+        (mouseOut)="closePreview(product)"
+      ></app-product-card>
+    </div>
+  </div>
+</div>
