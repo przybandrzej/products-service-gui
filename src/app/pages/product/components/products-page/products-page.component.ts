@@ -59,7 +59,7 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
   }
 
   public openProductDetails(product: ProductDTO): void {
-    this.router.navigateByUrl('/product/' + product.id);
+    this.router.navigateByUrl('/products/' + product.id);
   }
 
   public showPreview(product: ProductDTO): void {

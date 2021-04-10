@@ -5,11 +5,16 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/products',
+    pathMatch: 'full',
+  },
+  {
     path: 'products',
     component: ProductsPageComponent,
   },
   {
-    path: 'product/:id',
+    path: 'products/:id',
     component: ProductDetailsComponent,
   },
 ];
