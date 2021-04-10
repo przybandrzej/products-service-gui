@@ -9,6 +9,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OnhoverClassDirective } from './directives/onhover-class.directive';
 import { TextClickableComponent } from './components/text-clickable/text-clickable.component';
+import { AddCardComponent } from './components/add-card/add-card.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { TextClickableComponent } from './components/text-clickable/text-clickab
     TextWithLabelComponent,
     TextWithLabelEditableComponent,
     TextClickableComponent,
+    AddCardComponent,
   ],
   imports: [
     CommonModule,
@@ -32,6 +34,7 @@ import { TextClickableComponent } from './components/text-clickable/text-clickab
     TextWithLabelComponent,
     TextWithLabelEditableComponent,
     TextClickableComponent,
+    AddCardComponent,
   ],
 })
 export class SharedModule {}

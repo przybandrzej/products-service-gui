@@ -37,6 +37,8 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
   private isHoveringTooltip: boolean = false;
   private subs: Subscription[] = [];
 
+  public cardSizes: CardSizes = { width: '300px', height: '414px' };
+
   @ViewChildren('productCard') productCards?: QueryList<ElementRef>;
 
   constructor(
@@ -61,6 +63,8 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
   public openProductDetails(product: ProductDTO): void {
     this.router.navigateByUrl('/products/' + product.id);
   }
+
+  public addNewProduct(): void {}
 
   public showPreview(product: ProductDTO): void {
     /*this.hoveredProduct?.next(product);
@@ -140,4 +144,9 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
       this.overlayRef = undefined;
     }*/
   }
+}
+
+export interface CardSizes {
+  height: string;
+  width: string;
 }
