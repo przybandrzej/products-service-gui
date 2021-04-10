@@ -65,6 +65,7 @@ const MODULES = [
   MatButtonToggleModule,
   MatChipsModule,
   OverlayModule,
+  MatIconModule,
 ];
 
 @NgModule({

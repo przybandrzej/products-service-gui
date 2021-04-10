@@ -18,6 +18,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
+import { ImageUrlDTO } from '../model/imageUrlDTO';
 import { ProductDTO } from '../model/productDTO';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -180,6 +181,47 @@ export class ProductResourceService {
         return this.httpClient.get<Array<ProductDTO>>(`${this.basePath}/api/products`,
             {
                 params: queryParameters,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * getProductImages
+     * 
+     * @param id id
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getProductImagesUsingGET(id: number, observe?: 'body', reportProgress?: boolean): Observable<Array<ImageUrlDTO>>;
+    public getProductImagesUsingGET(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<ImageUrlDTO>>>;
+    public getProductImagesUsingGET(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<ImageUrlDTO>>>;
+    public getProductImagesUsingGET(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling getProductImagesUsingGET.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.get<Array<ImageUrlDTO>>(`${this.basePath}/api/products/${encodeURIComponent(String(id))}/images`,
+            {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

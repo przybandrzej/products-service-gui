@@ -1,0 +1,18 @@
+.row {
+  position: relative;
+}
+
+.task-complete {
+  position: absolute;
+  opacity: 1;
+  margin-left: 15px;
+
+  #msg {
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+.hide {
+  opacity: 0;
+}

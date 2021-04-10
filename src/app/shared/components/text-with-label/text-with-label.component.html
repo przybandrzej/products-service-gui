@@ -1,0 +1,12 @@
+<div
+  fxLayout="row"
+  fxLayoutAlign="start center"
+  class="card thin-frame-faded6"
+  fxFlex="100%"
+>
+  <mat-icon id="icon" *ngIf="icon || icon.length > 0">{{ icon }}</mat-icon>
+  <div fxLayout="column" fxLayoutAlign="start stretch" class="content">
+    <span id="label">{{ label }}</span>
+    <span id="value">{{ text }}</span>
+  </div>
+</div>

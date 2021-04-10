@@ -1,0 +1,51 @@
+<div class="row" fxFlex="100%" fxLayoutAlign="stretch center">
+  <div
+    *ngIf="!editMode"
+    fxLayout="row"
+    fxFlex="100%"
+    fxLayoutAlign="start center"
+    [class.hide]="_showOverlay"
+  >
+    <app-text-with-label
+      fxFlex
+      [icon]="icon"
+      [label]="label"
+      [text]="text"
+    ></app-text-with-label>
+    <button mat-icon-button (click)="edit($event)">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+  <div
+    *ngIf="editMode"
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    fxFlex="100%"
+  >
+    <app-input
+      [icon]="icon"
+      [label]="label"
+      [(text)]="inputValue"
+      fxFlex
+    ></app-input>
+    <button mat-icon-button (click)="save($event)">
+      <mat-icon>done</mat-icon>
+    </button>
+    <button mat-icon-button (click)="cancelEdit($event)">
+      <mat-icon>cancel</mat-icon>
+    </button>
+  </div>
+  <div
+    *ngIf="_showOverlay"
+    class="task-complete"
+    fxLayout="row"
+    fxLayoutGap="5px"
+    fxLayoutAlign="start center"
+    [style.color]="isEditSuccess ? '#28c959' : 'rgb(219, 57, 84)'"
+  >
+    <mat-icon *ngIf="isEditSuccess">task_alt</mat-icon>
+    <span id="msg" *ngIf="isEditSuccess">Saved succesfully!</span>
+    <mat-icon *ngIf="!isEditSuccess">highlight_off</mat-icon>
+    <span id="msg" *ngIf="!isEditSuccess">Save error!</span>
+  </div>
+</div>

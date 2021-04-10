@@ -63,7 +63,7 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
   }
 
   public showPreview(product: ProductDTO): void {
-    this.hoveredProduct?.next(product);
+    /*this.hoveredProduct?.next(product);
     setTimeout(() => {
       const elements = this.productCards?.filter((it) =>
         it.nativeElement.classList.contains('hovered')
@@ -129,15 +129,15 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
           console.log('out');
         })
       );
-    });
+    });*/
   }
 
   public closePreview(product: ProductDTO): void {
-    if (!this.isHoveringTooltip) {
+    /*if (!this.isHoveringTooltip) {
       this.hoveredProduct.next({});
       this.overlayRef?.detach();
       this.overlayRef?.dispose();
       this.overlayRef = undefined;
-    }
+    }*/
   }
 }

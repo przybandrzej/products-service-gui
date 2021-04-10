@@ -1,0 +1,28 @@
+<div
+  fxLayout="row"
+  fxLayoutAlign="start center"
+  class="card thin-frame-faded6"
+  fxFlex="100%"
+  [class.disabled]="isDisabled"
+  [class.thin-frame-faded4]="isDisabled"
+>
+  <mat-icon id="icon" *ngIf="icon || icon.length > 0">{{ icon }}</mat-icon>
+  <div
+    fxLayout="column"
+    fxLayoutAlign="start stretch"
+    class="input"
+    fxFlex
+    [style.margin-left]="icon || icon.length > 0 ? '32px' : '8px'"
+  >
+    <input
+      type="text"
+      name="value"
+      required
+      [ngModel]="text"
+      (ngModelChange)="change($event)"
+      [disabled]="isDisabled"
+    />
+    <label for="value">{{ label }}</label>
+    <span class="bar"></span>
+  </div>
+</div>
