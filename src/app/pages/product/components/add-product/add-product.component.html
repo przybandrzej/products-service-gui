@@ -1,9 +1,9 @@
 <div
   fxLayout="row"
   fxFlex="100%"
-  fxLayoutGap="20px"
   class="details-panel thin-frame-r4 mat-elevation-z3"
 >
+  <div class="progress" *ngIf="loading"><mat-spinner></mat-spinner></div>
   <mat-vertical-stepper [linear]="true" #stepper fxFlex>
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
@@ -56,43 +56,80 @@
         </div>
 
         <div>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-raised-button matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
 
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
+    <mat-step>
+      <form>
         <ng-template matStepLabel>Images</ng-template>
 
         <div fxLayout="column">
-          <span>Images list</span>
-          <mat-form-field>
-            <mat-label>Image</mat-label>
-            <input matInput formControlName="secondCtrl" />
-          </mat-form-field>
+          <div
+            fxLayout="row"
+            *ngFor="let image of imagesToAdd"
+            fxLayoutAlign="start center"
+          >
+            <mat-icon>image</mat-icon>
+            <span>{{ image }}</span>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-form-field>
+              <mat-label>Image</mat-label>
+              <input
+                matInput
+                [(ngModel)]="imageToAdd"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </mat-form-field>
+            <button mat-raised-button color="accent" (click)="addImage($event)">
+              Add
+            </button>
+          </div>
         </div>
 
         <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-raised-button matStepperPrevious>Back</button>
+          <button mat-raised-button matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
 
-    <mat-step [stepControl]="thirdFormGroup">
-      <form [formGroup]="thirdFormGroup">
-        <ng-template matStepLabel>Attributes</ng-template>
+    <mat-step>
+      <form>
+        <ng-template matStepLabel>Category</ng-template>
 
         <div fxLayout="column">
-          <mat-form-field>
-            <mat-label>Attribute</mat-label>
-            <input matInput formControlName="thirdCtrl" />
-          </mat-form-field>
+          <div
+            fxLayout="row"
+            *ngFor="let cat of categoriesToAdd"
+            fxLayoutAlign="start center"
+          >
+            <mat-icon>category</mat-icon>
+            <span>{{ cat }}</span>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <app-autocomplete
+              [label]="'Category'"
+              [allowFreeText]="true"
+              (selectionChange)="categoryChange($event)"
+              (valueChanged)="categoryChange($event)"
+              [values]="categoryNames"
+              [selection]="thirdFormGroup.get('category')?.value"
+            ></app-autocomplete>
+            <button
+              mat-raised-button
+              color="accent"
+              (click)="addCategory($event)"
+            >
+              Add
+            </button>
+          </div>
         </div>
 
         <div>
-          <button mat-button matStepperPrevious>Back</button>
+          <button mat-raised-button matStepperPrevious>Back</button>
           <button mat-raised-button color="accent" (click)="create($event)">
             Create
           </button>
