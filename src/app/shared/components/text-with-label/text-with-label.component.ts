@@ -15,6 +15,9 @@ export class TextWithLabelComponent implements OnInit {
   @Input('icon')
   public icon: string = '';
 
+  @Input('showBorder')
+  public showBorder: boolean = true;
+
   constructor() {}
 
   ngOnInit(): void {}
