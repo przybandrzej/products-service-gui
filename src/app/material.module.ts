@@ -31,6 +31,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexModule } from '@angular/flex-layout';
 import { MatChipsModule } from '@angular/material/chips';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { MatStepperModule } from '@angular/material/stepper';
 
 const MODULES = [
   MatIconModule,
@@ -66,6 +67,7 @@ const MODULES = [
   MatChipsModule,
   OverlayModule,
   MatIconModule,
+  MatStepperModule,
 ];
 
 @NgModule({

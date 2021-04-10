@@ -1,0 +1,18 @@
+<mat-form-field>
+  <mat-label>{{ label }}</mat-label>
+  <input
+    type="text"
+    matInput
+    [formControl]="control"
+    [matAutocomplete]="auto"
+  />
+  <mat-autocomplete
+    [autoActiveFirstOption]="!allowFreeText"
+    #auto="matAutocomplete"
+    [displayWith]="displayFn"
+  >
+    <mat-option *ngFor="let desc of filteredOptions | async" [value]="desc">
+      {{ desc }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

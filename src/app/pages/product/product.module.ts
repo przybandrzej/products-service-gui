@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 import { ProductsPageComponent } from './components/products-page/products-page.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductTooltipComponent } from './components/product-tooltip/product-tooltip.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
 
 export function getAPIConfiguration() {
   return new Configuration({ basePath: environment.api_url });
@@ -22,6 +23,7 @@ export function getAPIConfiguration() {
     ProductsPageComponent,
     ProductDetailsComponent,
     ProductTooltipComponent,
+    AddProductComponent,
   ],
   exports: [ProductsPageComponent],
   imports: [

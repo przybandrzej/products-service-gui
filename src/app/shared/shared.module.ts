@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { OnhoverClassDirective } from './directives/onhover-class.directive';
 import { TextClickableComponent } from './components/text-clickable/text-clickable.component';
 import { AddCardComponent } from './components/add-card/add-card.component';
+import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AddCardComponent } from './components/add-card/add-card.component';
     TextWithLabelEditableComponent,
     TextClickableComponent,
     AddCardComponent,
+    AutocompleteComponent,
   ],
   imports: [
     CommonModule,
@@ -35,6 +37,7 @@ import { AddCardComponent } from './components/add-card/add-card.component';
     TextWithLabelEditableComponent,
     TextClickableComponent,
     AddCardComponent,
+    AutocompleteComponent,
   ],
 })
 export class SharedModule {}
