@@ -54,6 +54,7 @@ export class AddProductComponent implements OnInit {
       currency: [],
       brand: [''],
       shop: [''],
+      description: [''],
     });
     this.thirdFormGroup = this._formBuilder.group({
       category: [''],
@@ -209,6 +210,7 @@ export class AddProductComponent implements OnInit {
         : undefined,
       shops: [],
       categories: [],
+      description: this.firstFormGroup.get('description')?.value,
     };
     const productReq: Observable<ProductDTO> = new Observable<ProductDTO>(
       (subscriber) => {

@@ -1,6 +1,6 @@
 import { ProductResourceService } from './../../../../pms-products-sdk/api/productResource.service';
 import { ProductDTO } from './../../../../pms-products-sdk/model/productDTO';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ImageUrlDTO } from 'src/app/pms-products-sdk';
 import { ActivatedRoute } from '@angular/router';
 
