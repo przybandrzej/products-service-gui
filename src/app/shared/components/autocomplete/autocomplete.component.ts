@@ -17,7 +17,6 @@ export class AutocompleteComponent implements OnInit {
   @Input()
   public set values(value: string[]) {
     this._originalVlues = value;
-    console.log('values');
     this.setup();
   }
 
@@ -42,7 +41,6 @@ export class AutocompleteComponent implements OnInit {
   @Input()
   public set selection(value: string) {
     this._selection = value;
-    console.log('selection');
     this.setup();
   }
 
