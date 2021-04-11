@@ -21,6 +21,7 @@ export interface ProductDTO {
     categories?: Array<CategoryDTO>;
     currencyId?: number;
     currencySymbol?: string;
+    description?: string;
     id?: number;
     name?: string;
     previewImageId?: number;

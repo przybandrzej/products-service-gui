@@ -1,0 +1,68 @@
+#make-3D-space {
+  transform-style: preserve-3d;
+  transition: transform 5s;
+  cursor: pointer;
+}
+
+.card {
+  overflow: hidden;
+  transform-style: preserve-3d;
+  -webkit-transition: 100ms ease-out;
+  -moz-transition: 100ms ease-out;
+  -o-transition: 100ms ease-out;
+  transition: 100ms ease-out;
+  font-size: 100px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color: #393c45, $alpha: 0.4);
+
+  p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba($color: #393c45, $alpha: 1);
+    z-index: 1001;
+  }
+}
+
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba($color: #393c45, $alpha: 0.5);
+  width: 100px;
+  height: 100px;
+  opacity: 0;
+  z-index: 1000;
+  border-radius: 100px;
+  -webkit-transition: 50ms ease-out;
+  -moz-transition: 50ms ease-out;
+  -o-transition: 50ms ease-out;
+  transition: 50ms ease-out;
+}
+
+#make-3D-space.animate {
+  box-shadow: 0px 13px 21px -5px rgba(0, 0, 0, 0.3);
+  -webkit-transition: 100ms ease-out;
+  -moz-transition: 100ms ease-out;
+  -o-transition: 100ms ease-out;
+  transition: 100ms ease-out;
+
+  .card {
+    background-color: rgba($color: #393c45, $alpha: 0.6);
+
+    .ring {
+      opacity: 1;
+      -webkit-transition: 50ms ease-out;
+      -moz-transition: 50ms ease-out;
+      -o-transition: 50ms ease-out;
+      transition: 50ms ease-out;
+    }
+
+    p {
+      color: rgba($color: #15161a, $alpha: 1);
+    }
+  }
+}

@@ -1,0 +1,203 @@
+<div
+  fxLayout="row"
+  fxFlex="100%"
+  class="details-panel thin-frame-r4 mat-elevation-z3"
+>
+  <div class="progress-overlay" *ngIf="loading">
+    <div fxLayout="column" fxLayoutGap="15px" class="progress-status">
+      <mat-spinner></mat-spinner>
+      <span>{{ progressMessage }}</span>
+    </div>
+  </div>
+  <mat-vertical-stepper [linear]="true" #stepper fxFlex>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Basic Info</ng-template>
+
+        <div fxLayout="row" fxLayoutGap="14px">
+          <div fxLayout="column" fxLayoutGap="14px" fxFlex="25%">
+            <mat-form-field>
+              <mat-label>Product name</mat-label>
+              <input matInput type="text" formControlName="name" required />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Product subtitle</mat-label>
+              <input matInput type="text" formControlName="subtitle" />
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutGap="10px">
+              <mat-form-field class="price">
+                <mat-label>Product price</mat-label>
+                <input matInput type="number" formControlName="price" />
+              </mat-form-field>
+              <mat-form-field class="currency">
+                <mat-label>Currency</mat-label>
+                <mat-select formControlName="currency">
+                  <mat-option
+                    *ngFor="let option of currencies"
+                    [value]="option.id"
+                    >{{ option.symbol }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxLayout="column" fxLayoutGap="14px" fxFlex="35%">
+            <app-autocomplete
+              [label]="'Brand'"
+              [allowFreeText]="true"
+              (selectionChange)="brandChange($event)"
+              (valueChanged)="brandChange($event)"
+              [values]="brandsNames"
+            ></app-autocomplete>
+            <div fxLayout="column">
+              <div fxLayout="row wrap">
+                <div
+                  fxLayout="row"
+                  *ngFor="let shop of shopsToAdd; last as isLast"
+                  fxLayoutAlign="start center"
+                  class="entry"
+                >
+                  <mat-icon>shopping_cart</mat-icon>
+                  <span>{{ shop }}</span>
+                  <button
+                    mat-icon-button
+                    class="cancel-button"
+                    (click)="removeShop($event, shop)"
+                  >
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                </div>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <app-autocomplete
+                  [label]="'Shop'"
+                  [allowFreeText]="true"
+                  (selectionChange)="shopChange($event)"
+                  (valueChanged)="shopChange($event)"
+                  [selection]="firstFormGroup.get('shop')?.value"
+                  [values]="shopsNames"
+                ></app-autocomplete>
+                <button
+                  mat-raised-button
+                  color="accent"
+                  (click)="addShop($event)"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <mat-form-field fxFlex>
+            <mat-label>Leave a comment</mat-label>
+            <textarea
+              matInput
+              placeholder="Description..."
+              cdkTextareaAutosize
+              [cdkAutosizeMinRows]="7"
+              formControlName="description"
+            ></textarea>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <button mat-raised-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <form>
+        <ng-template matStepLabel>Images</ng-template>
+
+        <div fxLayout="column">
+          <div
+            fxLayout="row"
+            *ngFor="let image of imagesToAdd"
+            fxLayoutAlign="start center"
+            class="entry"
+          >
+            <mat-icon>image</mat-icon>
+            <span>{{ image }}</span>
+            <button
+              mat-icon-button
+              class="cancel-button"
+              (click)="removeImage($event, image)"
+            >
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-form-field>
+              <mat-label>Image</mat-label>
+              <input
+                matInput
+                [(ngModel)]="imageToAdd"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </mat-form-field>
+            <button mat-raised-button color="accent" (click)="addImage($event)">
+              Add
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <button mat-raised-button matStepperPrevious>Back</button>
+          <button mat-raised-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <form>
+        <ng-template matStepLabel>Category</ng-template>
+
+        <div fxLayout="column" fxLayoutGap="8px" fxLayoutAlign="start start">
+          <div
+            fxLayout="row"
+            *ngFor="let cat of categoriesToAdd"
+            fxLayoutAlign="start center"
+            fxLayoutGap="8px"
+            class="entry"
+          >
+            <mat-icon>category</mat-icon>
+            <span>{{ cat }}</span>
+            <button
+              mat-icon-button
+              class="cancel-button"
+              (click)="removeCategory($event, cat)"
+            >
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <app-autocomplete
+              [label]="'Category'"
+              [allowFreeText]="true"
+              (selectionChange)="categoryChange($event)"
+              (valueChanged)="categoryChange($event)"
+              [selection]="thirdFormGroup.get('category')?.value"
+              [values]="categoryNames"
+            ></app-autocomplete>
+            <button
+              mat-raised-button
+              color="accent"
+              (click)="addCategory($event)"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <button mat-raised-button matStepperPrevious>Back</button>
+          <button mat-raised-button color="accent" (click)="create($event)">
+            Create
+          </button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-vertical-stepper>
+</div>

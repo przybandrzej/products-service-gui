@@ -1,0 +1,52 @@
+.details-panel {
+  margin: 6em;
+  padding: 1em;
+}
+
+.title {
+  font-size: 26px;
+  color: #000000de;
+  font-weight: 500;
+}
+
+#title-divider {
+  margin-top: 8px;
+}
+
+.fancy-table {
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.divider {
+  margin-top: 4px;
+  margin-bottom: 6px;
+}
+
+.product_price {
+  color: #48cfad;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.product_price_currency {
+  color: #48cfad;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #b1b1b3;
+  padding: 2px 0 0 0;
+}
+
+.description {
+  padding: 2em;
+
+  span {
+    font-size: 22px;
+    color: #000000de;
+    font-weight: 500;
+  }
+}

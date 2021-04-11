@@ -1,0 +1,25 @@
+.card {
+  padding: 8px;
+  overflow-y: hidden;
+  overflow-x: auto;
+  width: 3em;
+  position: relative;
+}
+
+.card .content {
+  margin-left: 8px;
+}
+
+.card .content #label {
+  color: #b1b1b3;
+  font-size: 14px;
+}
+
+.card .content #value {
+  color: #393c45;
+  font-size: 16px;
+}
+
+#icon {
+  opacity: 0.7;
+}

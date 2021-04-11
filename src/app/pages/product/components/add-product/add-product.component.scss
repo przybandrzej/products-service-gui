@@ -1,0 +1,40 @@
+.details-panel {
+  margin: 6em;
+  position: relative;
+}
+
+.currency {
+  width: 6em;
+}
+
+.price {
+  width: 6em;
+}
+
+.progress-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: rgba($color: #000000, $alpha: 0.2);
+
+  .progress-status {
+    z-index: 1002;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    span {
+      text-align: center;
+    }
+  }
+}
+
+.cancel-button {
+  opacity: 0;
+}
+
+.entry:hover .cancel-button {
+  opacity: 1;
+}

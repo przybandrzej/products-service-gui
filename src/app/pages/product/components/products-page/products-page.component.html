@@ -1,0 +1,24 @@
+<div fxFlex="100%" fxLayout="column">
+  <div fxLayout="row wrap" fxLayoutGap="10px grid">
+    <div
+      *ngFor="let product of products"
+      #productCard
+      [class.hovered]="(hoveredProduct | async)?.id === product.id"
+    >
+      <app-product-card
+        [style.width]="cardSizes.width"
+        [style.height]="cardSizes.height"
+        [product]="product"
+        (productClicked)="openProductDetails(product)"
+        (mouseIn)="showPreview(product)"
+        (mouseOut)="closePreview(product)"
+      ></app-product-card>
+    </div>
+    <app-add-card
+      [style.width]="cardSizes.width"
+      [style.height]="cardSizes.height"
+      class="add-card"
+      (clicked)="addNewProduct()"
+    ></app-add-card>
+  </div>
+</div>

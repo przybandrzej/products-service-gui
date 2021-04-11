@@ -30,6 +30,8 @@ import { CdkTreeModule } from '@angular/cdk/tree';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexModule } from '@angular/flex-layout';
 import { MatChipsModule } from '@angular/material/chips';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { MatStepperModule } from '@angular/material/stepper';
 
 const MODULES = [
   MatIconModule,
@@ -63,6 +65,9 @@ const MODULES = [
   ReactiveFormsModule,
   MatButtonToggleModule,
   MatChipsModule,
+  OverlayModule,
+  MatIconModule,
+  MatStepperModule,
 ];
 
 @NgModule({

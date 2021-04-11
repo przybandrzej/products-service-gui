@@ -1,9 +1,10 @@
 <div
   id="make-3D-space"
   fxLayout="column"
-  class="product-card-dimen"
+  class="product-card-dimen mat-elevation-z1"
   (mouseenter)="onMouseEnter($event)"
   (mouseleave)="onMouseLeave($event)"
+  fxFlex="100%"
 >
   <div id="product-card" [onhoverClass]="'animate'" fxFlex="100%">
     <div
@@ -13,7 +14,7 @@
       fxFlex="100%"
     >
       <div class="image_container">
-        <img class="image" [src]="product.previewImageUrl" />
+        <img class="image" [src]="preveiw" />
         <div class="image_overlay"></div>
         <div id="view_details" (click)="select($event)">View details</div>
       </div>

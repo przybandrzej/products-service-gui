@@ -1,0 +1,87 @@
+<div
+  fxLayout="column"
+  fxLayoutGap="20px"
+  fxFlex="100%"
+  class="details-panel thin-frame-r4 mat-elevation-z3"
+>
+  <div fxLayout="row" fxLayoutGap="20px">
+    <app-carousel
+      [slides]="images"
+      style="height: 300px"
+      fxFlex="30%"
+    ></app-carousel>
+    <div fxLayout="column" fxFlex fxLayoutGap="12px">
+      <div fxLayout="row" fxLayoutGap="6px">
+        <app-text-clickable
+          *ngFor="let category of product.categories"
+          [text]="category.name ? category.name : ''"
+          [fontSize]="'15px'"
+          [color]="'#b1b1b3'"
+          (clicked)="categoryClicked()"
+        ></app-text-clickable>
+      </div>
+      <div fxLayout="row" fxFlex fxLayoutGap="12px">
+        <div fxLayout="column" fxFlex fxLayoutGap="12px">
+          <div fxLayout="column" fxLayoutAlign="start start">
+            <div fxLayout="column">
+              <span class="title">{{ product.name }}</span>
+              <mat-divider id="title-divider"></mat-divider>
+            </div>
+          </div>
+
+          <p class="subtitle">{{ product.subtitle }}</p>
+          <app-text-with-label
+            [icon]="'badge'"
+            [text]="product.brandName ? product.brandName : ''"
+            [showBorder]="false"
+          ></app-text-with-label>
+
+          <div fxLayout="row" fxLayoutAlign="start start">
+            <div fxLayout="column" class="fancy-table thin-frame-faded6">
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                fxLayoutGap="8px"
+              >
+                <mat-icon>shopping_cart</mat-icon>
+                <span>Shops</span>
+              </div>
+              <mat-divider class="divider"></mat-divider>
+              <div fxLayout="row wrap">
+                <div
+                  *ngFor="let shop of product.shops; last as last"
+                  fxLayout="row"
+                >
+                  <span>{{ shop.name }}</span>
+                  <span *ngIf="!last">,&nbsp;</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="column" fxFlex fxLayoutGap="12px">
+          <div fxLayout="row" fxLayoutAlign="end">
+            <div fxLayout="row" fxLayoutGap="4px">
+              <span class="product_price_currency">{{
+                product.currencySymbol
+              }}</span>
+              <span class="product_price">{{ product.price }}</span>
+            </div>
+          </div>
+
+          <div fxFlex class="fancy-table thin-frame-faded6">
+            <div *ngFor="let attr of product.attributeEntries">
+              <span>{{ attr.value }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div fxLayout="column" fxLayoutGap="8px" class="description">
+    <span>Description</span>
+    <mat-divider></mat-divider>
+    <p>{{ product.description }}</p>
+  </div>
+</div>

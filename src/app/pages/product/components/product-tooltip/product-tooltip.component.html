@@ -1,0 +1,11 @@
+<div
+  class="overlay"
+  fxLayout="column"
+  (mouseenter)="onMouseEnter($event)"
+  (mouseleave)="onMouseLeave($event)"
+>
+  <span>Shops:</span>
+  <span>{{ data.shops.join(", ") }}</span>
+  <span>Categories:</span>
+  <span>{{ data.categories.join(", ") }}</span>
+</div>
