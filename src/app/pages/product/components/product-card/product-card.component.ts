@@ -10,6 +10,9 @@ export class ProductCardComponent implements OnInit {
   @Input('product')
   public set _product(val: ProductDTO) {
     this.product = val;
+    if (this.product.previewImageUrl) {
+      this.preveiw = this.product.previewImageUrl;
+    }
   }
 
   public product: ProductDTO = {};
@@ -22,6 +25,8 @@ export class ProductCardComponent implements OnInit {
 
   @Output('mouseOut')
   public mouseOutEvent: EventEmitter<void> = new EventEmitter();
+
+  public preveiw: string = 'assets/488px-no-image.png';
 
   constructor() {}
 

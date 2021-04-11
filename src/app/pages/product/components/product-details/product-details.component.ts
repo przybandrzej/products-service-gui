@@ -13,7 +13,11 @@ export class ProductDetailsComponent implements OnInit {
   public set productId(id: number) {
     this.productService.getProductUsingGET(id).subscribe((res) => {
       this.product = res;
-      this.images.push({ url: this.product.previewImageUrl });
+      if (this.product.previewImageUrl) {
+        this.images.push({ url: this.product.previewImageUrl });
+      } else {
+        this.images.push({ url: this.default });
+      }
     });
     this.productService
       .getProductImagesUsingGET(id)
@@ -22,6 +26,8 @@ export class ProductDetailsComponent implements OnInit {
 
   public product: ProductDTO = {};
   public images: ImageUrlDTO[] = [];
+
+  private default: string = 'assets/488px-no-image.png';
 
   constructor(
     private productService: ProductResourceService,
