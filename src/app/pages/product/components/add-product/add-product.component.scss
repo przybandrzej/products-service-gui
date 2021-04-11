@@ -30,3 +30,11 @@
     }
   }
 }
+
+.cancel-button {
+  opacity: 0;
+}
+
+.entry:hover .cancel-button {
+  opacity: 1;
+}

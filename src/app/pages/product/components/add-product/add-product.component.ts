@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { map, mergeMap } from 'rxjs/operators';
 import { ImageUrlResourceService } from './../../../../pms-products-sdk/api/imageUrlResource.service';
-import { forkJoin, merge, Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { ProductResourceService } from './../../../../pms-products-sdk/api/productResource.service';
 import { CategoryResourceService } from './../../../../pms-products-sdk/api/categoryResource.service';
 import { CategoryDTO } from './../../../../pms-products-sdk/model/categoryDTO';
@@ -95,8 +95,11 @@ export class AddProductComponent implements OnInit {
   public addShop(event: Event): void {
     event.stopPropagation();
     const value = this.firstFormGroup.get('shop')?.value;
-    this.firstFormGroup.get('shop')?.setValue('');
     this.shopsToAdd.push(value);
+    this.shopsNames = this.shops
+      .filter((it) => this.shopsToAdd.find((i) => it.name === i) === undefined)
+      .map((it) => (it.name ? it.name : ''));
+    this.firstFormGroup.get('shop')?.setValue('');
   }
 
   public addImage(event: Event): void {
@@ -109,7 +112,6 @@ export class AddProductComponent implements OnInit {
   }
 
   public categoryChange(value: string): void {
-    console.log(value);
     this.thirdFormGroup.get('category')?.setValue(value);
   }
 
@@ -118,7 +120,13 @@ export class AddProductComponent implements OnInit {
     if (this.thirdFormGroup.get('category')?.value.length === 0) {
       return;
     }
-    this.categoriesToAdd.push(this.thirdFormGroup.get('category')?.value);
+    const val = this.thirdFormGroup.get('category')?.value;
+    this.categoriesToAdd.push(val);
+    this.categoryNames = this.categories
+      .filter(
+        (it) => this.categoriesToAdd.find((i) => it.name === i) === undefined
+      )
+      .map((it) => (it.name ? it.name : ''));
     this.thirdFormGroup.get('category')?.setValue('');
   }
 
@@ -160,6 +168,26 @@ export class AddProductComponent implements OnInit {
           );
         } else {
           shopsIds.push(shop.id ? shop.id : -1);
+        }
+      }
+    }
+
+    //create categories data
+    let categoriesCreateReq: Observable<CategoryDTO>[] = [];
+    let categoriesIds: number[] = [];
+    if (this.categoriesToAdd.length > 0) {
+      for (const categoryName of this.categoriesToAdd) {
+        let category = this.categories.find(
+          (it) => it.name?.toLowerCase() === categoryName.toLowerCase()
+        );
+        if (!category) {
+          categoriesCreateReq.push(
+            this.categoryService.createCategoryUsingPOST({
+              name: categoryName,
+            })
+          );
+        } else {
+          categoriesIds.push(category.id ? category.id : -1);
         }
       }
     }
@@ -239,6 +267,36 @@ export class AddProductComponent implements OnInit {
           return obs;
         }),
         mergeMap((product) => {
+          this.progressMessage = 'Creating categories...';
+          let obs = new Observable<ProductDTO>((subscriber) => {
+            subscriber.next(product);
+            subscriber.complete();
+          });
+          if (categoriesCreateReq.length > 0) {
+            obs = obs.pipe(
+              mergeMap((product) => {
+                return forkJoin(categoriesCreateReq).pipe(
+                  map((categories) => {
+                    categories.forEach((category) =>
+                      product.categories?.push(category)
+                    );
+                    return product;
+                  })
+                );
+              })
+            );
+          }
+          if (categoriesIds.length > 0) {
+            obs = obs.pipe(
+              map((product) => {
+                categoriesIds.forEach((id) => product.categories?.push({ id }));
+                return product;
+              })
+            );
+          }
+          return obs;
+        }),
+        mergeMap((product) => {
           this.progressMessage = 'Creating image preview...';
           if (imagePreveiwCreateReq) {
             return imagePreveiwCreateReq?.pipe(
@@ -295,5 +353,40 @@ export class AddProductComponent implements OnInit {
           this.loading = false;
         }
       );
+  }
+
+  removeCategory(event: Event, category: string): void {
+    event.stopPropagation();
+    const it = this.categoriesToAdd.find((it) => it === category);
+    if (it) {
+      const i = this.categoriesToAdd.indexOf(it);
+      this.categoriesToAdd.splice(i, 1);
+    }
+    this.categoryNames = this.categories
+      .filter(
+        (it) => this.categoriesToAdd.find((i) => it.name === i) === undefined
+      )
+      .map((it) => (it.name ? it.name : ''));
+  }
+
+  removeImage(event: Event, image: string): void {
+    event.stopPropagation();
+    const it = this.imagesToAdd.find((it) => it === image);
+    if (it) {
+      const i = this.imagesToAdd.indexOf(it);
+      this.imagesToAdd.splice(i, 1);
+    }
+  }
+
+  removeShop(event: Event, shop: string): void {
+    event.stopPropagation();
+    const it = this.shopsToAdd.find((it) => it === shop);
+    if (it) {
+      const i = this.shopsToAdd.indexOf(it);
+      this.shopsToAdd.splice(i, 1);
+    }
+    this.shopsNames = this.shops
+      .filter((it) => this.shopsToAdd.find((i) => it.name === i) === undefined)
+      .map((it) => (it.name ? it.name : ''));
   }
 }

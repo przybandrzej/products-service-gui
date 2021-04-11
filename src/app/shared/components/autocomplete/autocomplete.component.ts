@@ -17,6 +17,7 @@ export class AutocompleteComponent implements OnInit {
   @Input()
   public set values(value: string[]) {
     this._originalVlues = value;
+    console.log('values');
     this.setup();
   }
 
@@ -41,6 +42,7 @@ export class AutocompleteComponent implements OnInit {
   @Input()
   public set selection(value: string) {
     this._selection = value;
+    console.log('selection');
     this.setup();
   }
 
@@ -61,10 +63,10 @@ export class AutocompleteComponent implements OnInit {
     if (this._originalVlues) {
       this._values = [...this._originalVlues];
       this.control.setValue('');
-      const controlValue = this.values.find((elem) => elem == this.selection);
+      const controlValue = this.values.find((elem) => elem === this.selection);
       if (controlValue) {
         this.control.setValue(controlValue);
-      } else if (this._allowFreeText) {
+      } else if (this._allowFreeText || this.selection.length === 0) {
         this.control.setValue(this.selection);
       }
     }

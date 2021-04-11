@@ -51,15 +51,22 @@
               [values]="brandsNames"
             ></app-autocomplete>
             <div fxLayout="column">
-              <div fxLayout="row">
+              <div fxLayout="row wrap">
                 <div
                   fxLayout="row"
                   *ngFor="let shop of shopsToAdd; last as isLast"
                   fxLayoutAlign="start center"
+                  class="entry"
                 >
                   <mat-icon>shopping_cart</mat-icon>
                   <span>{{ shop }}</span>
-                  <span *ngIf="!isLast" [style.margin-right]="'5px'">,</span>
+                  <button
+                    mat-icon-button
+                    class="cancel-button"
+                    (click)="removeShop($event, shop)"
+                  >
+                    <mat-icon>cancel</mat-icon>
+                  </button>
                 </div>
               </div>
               <div fxLayout="row" fxLayoutAlign="start center">
@@ -68,8 +75,8 @@
                   [allowFreeText]="true"
                   (selectionChange)="shopChange($event)"
                   (valueChanged)="shopChange($event)"
-                  [values]="shopsNames"
                   [selection]="firstFormGroup.get('shop')?.value"
+                  [values]="shopsNames"
                 ></app-autocomplete>
                 <button
                   mat-raised-button
@@ -98,9 +105,17 @@
             fxLayout="row"
             *ngFor="let image of imagesToAdd"
             fxLayoutAlign="start center"
+            class="entry"
           >
             <mat-icon>image</mat-icon>
             <span>{{ image }}</span>
+            <button
+              mat-icon-button
+              class="cancel-button"
+              (click)="removeImage($event, image)"
+            >
+              <mat-icon>cancel</mat-icon>
+            </button>
           </div>
           <div fxLayout="row" fxLayoutAlign="start center">
             <mat-form-field>
@@ -128,14 +143,23 @@
       <form>
         <ng-template matStepLabel>Category</ng-template>
 
-        <div fxLayout="column">
+        <div fxLayout="column" fxLayoutGap="8px" fxLayoutAlign="start start">
           <div
             fxLayout="row"
             *ngFor="let cat of categoriesToAdd"
             fxLayoutAlign="start center"
+            fxLayoutGap="8px"
+            class="entry"
           >
             <mat-icon>category</mat-icon>
             <span>{{ cat }}</span>
+            <button
+              mat-icon-button
+              class="cancel-button"
+              (click)="removeCategory($event, cat)"
+            >
+              <mat-icon>cancel</mat-icon>
+            </button>
           </div>
           <div fxLayout="row" fxLayoutAlign="start center">
             <app-autocomplete
@@ -143,8 +167,8 @@
               [allowFreeText]="true"
               (selectionChange)="categoryChange($event)"
               (valueChanged)="categoryChange($event)"
-              [values]="categoryNames"
               [selection]="thirdFormGroup.get('category')?.value"
+              [values]="categoryNames"
             ></app-autocomplete>
             <button
               mat-raised-button
