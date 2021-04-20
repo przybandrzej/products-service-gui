@@ -162,6 +162,7 @@
             (valueChanged)="categoryChange($event)"
             [selection]="thirdFormGroup.get('category')?.value"
             [values]="categoryNames"
+            [isRequired]="true"
           ></app-autocomplete>
         </div>
 

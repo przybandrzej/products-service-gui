@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
 
 @Component({
@@ -9,8 +9,7 @@ import { map, startWith } from 'rxjs/operators';
   styleUrls: ['./autocomplete.component.scss'],
 })
 export class AutocompleteComponent implements OnInit {
-  control = new FormControl();
-
+  public control: FormControl = new FormControl();
   public _values: string[] = [];
   public _originalVlues: string[] = [];
 
@@ -49,9 +48,13 @@ export class AutocompleteComponent implements OnInit {
   }
 
   @Input()
-  public set formControl(value: FormControl) {
-    this.control = value;
-    this.setup();
+  public set isRequired(val: boolean) {
+    if (val) {
+      this.control.setValidators(Validators.required);
+    } else {
+      this.control.clearValidators();
+    }
+    this.control.updateValueAndValidity();
   }
 
   @Input()

@@ -56,7 +56,7 @@ export class AddProductComponent implements OnInit {
       description: [''],
     });
     this.thirdFormGroup = this._formBuilder.group({
-      category: [''],
+      category: ['', Validators.required],
     });
   }
 
@@ -117,6 +117,10 @@ export class AddProductComponent implements OnInit {
 
   public create(event: Event): void {
     event.stopPropagation();
+    if (this.thirdFormGroup.get('category')?.errors) {
+      this.thirdFormGroup.get('category');
+      return;
+    }
     this.progressMessage = 'Preparing structures...';
     this.loading = true;
 
