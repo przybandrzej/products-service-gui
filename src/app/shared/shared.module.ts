@@ -12,6 +12,7 @@ import { TextClickableComponent } from './components/text-clickable/text-clickab
 import { AddCardComponent } from './components/add-card/add-card.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 import { AttributeDisplayComponent } from './components/attribute-display/attribute-display.component';
+import { ErrorBannerComponent } from './components/error-banner/error-banner.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { AttributeDisplayComponent } from './components/attribute-display/attrib
     AddCardComponent,
     AutocompleteComponent,
     AttributeDisplayComponent,
+    ErrorBannerComponent,
   ],
   imports: [
     CommonModule,
@@ -41,6 +43,7 @@ import { AttributeDisplayComponent } from './components/attribute-display/attrib
     AddCardComponent,
     AutocompleteComponent,
     AttributeDisplayComponent,
+    ErrorBannerComponent,
   ],
 })
 export class SharedModule {}

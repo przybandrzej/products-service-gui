@@ -1,0 +1,20 @@
+<div fxLayout="column">
+  <div class="content" fxLayout="row" fxLayoutAlign="space-between start">
+    <div fxLayout="column" fxFlex="30%" cdkScrollable id="list">
+      <div #card *ngFor="let cat of categories">
+        <app-category-card
+          [category]="cat"
+          (click)="select($event, cat)"
+        ></app-category-card>
+      </div>
+      <app-error-banner *ngIf="error"></app-error-banner>
+    </div>
+    <div fxFlex="15%"></div>
+    <div #editor fxFlex="55%">
+      <app-category-editor
+        (edited)="edited($event)"
+        (created)="created($event)"
+      ></app-category-editor>
+    </div>
+  </div>
+</div>

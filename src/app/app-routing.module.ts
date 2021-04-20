@@ -1,3 +1,4 @@
+import { CategoriesPageComponent } from './pages/category/components/categories-page/categories-page.component';
 import { AddProductComponent } from './pages/product/components/add-product/add-product.component';
 import { ProductDetailsComponent } from './pages/product/components/product-details/product-details.component';
 import { ProductsPageComponent } from './pages/product/components/products-page/products-page.component';
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'products/:id',
     component: ProductDetailsComponent,
+  },
+  {
+    path: 'categories',
+    component: CategoriesPageComponent,
   },
 ];
 
