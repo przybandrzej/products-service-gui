@@ -12,12 +12,7 @@
 
 
 export interface AttributeDTO { 
-    categoryId?: number;
+    attributeTypeId?: number;
     id?: number;
-    isBoolean?: boolean;
-    isDate?: boolean;
-    isDouble?: boolean;
-    isLong?: boolean;
-    isString?: boolean;
     name?: string;
 }

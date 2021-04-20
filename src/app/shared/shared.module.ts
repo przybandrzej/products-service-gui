@@ -11,6 +11,7 @@ import { OnhoverClassDirective } from './directives/onhover-class.directive';
 import { TextClickableComponent } from './components/text-clickable/text-clickable.component';
 import { AddCardComponent } from './components/add-card/add-card.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
+import { AttributeDisplayComponent } from './components/attribute-display/attribute-display.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AutocompleteComponent } from './components/autocomplete/autocomplete.co
     TextClickableComponent,
     AddCardComponent,
     AutocompleteComponent,
+    AttributeDisplayComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +40,7 @@ import { AutocompleteComponent } from './components/autocomplete/autocomplete.co
     TextClickableComponent,
     AddCardComponent,
     AutocompleteComponent,
+    AttributeDisplayComponent,
   ],
 })
 export class SharedModule {}

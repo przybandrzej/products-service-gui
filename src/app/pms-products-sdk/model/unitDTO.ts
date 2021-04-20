@@ -11,8 +11,9 @@
  */
 
 
-export interface CategoryDTO { 
+export interface UnitDTO { 
     id?: number;
     name?: string;
-    parentCategoryId?: number;
+    shortName?: string;
+    symbol?: string;
 }

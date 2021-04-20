@@ -32,7 +32,6 @@ export class AddProductComponent implements OnInit {
   public imageToAdd: string = '';
   public categories: CategoryDTO[] = [];
   public categoryNames: string[] = [];
-  public categoriesToAdd: string[] = [];
   public loading: boolean = false;
   public progressMessage: string = 'Creating...';
   public shopsToAdd: string[] = [];
@@ -116,21 +115,6 @@ export class AddProductComponent implements OnInit {
     this.thirdFormGroup.get('category')?.setValue(value);
   }
 
-  public addCategory(event: Event): void {
-    event.stopPropagation();
-    if (this.thirdFormGroup.get('category')?.value.length === 0) {
-      return;
-    }
-    const val = this.thirdFormGroup.get('category')?.value;
-    this.categoriesToAdd.push(val);
-    this.categoryNames = this.categories
-      .filter(
-        (it) => this.categoriesToAdd.find((i) => it.name === i) === undefined
-      )
-      .map((it) => (it.name ? it.name : ''));
-    this.thirdFormGroup.get('category')?.setValue('');
-  }
-
   public create(event: Event): void {
     event.stopPropagation();
     this.progressMessage = 'Preparing structures...';
@@ -173,23 +157,15 @@ export class AddProductComponent implements OnInit {
       }
     }
 
-    //create categories data
-    let categoriesCreateReq: Observable<CategoryDTO>[] = [];
-    let categoriesIds: number[] = [];
-    if (this.categoriesToAdd.length > 0) {
-      for (const categoryName of this.categoriesToAdd) {
-        let category = this.categories.find(
-          (it) => it.name?.toLowerCase() === categoryName.toLowerCase()
-        );
-        if (!category) {
-          categoriesCreateReq.push(
-            this.categoryService.createCategoryUsingPOST({
-              name: categoryName,
-            })
-          );
-        } else {
-          categoriesIds.push(category.id ? category.id : -1);
-        }
+    //create category data
+    let categoryId: number | undefined;
+    const categoryName = this.thirdFormGroup.get('category')?.value;
+    if (categoryName.length > 0) {
+      let category = this.categories.find(
+        (it) => it.name?.toLowerCase() === categoryName.toLowerCase()
+      );
+      if (category) {
+        categoryId = category.id;
       }
     }
 
@@ -208,8 +184,7 @@ export class AddProductComponent implements OnInit {
       currencyId: priceVal
         ? this.firstFormGroup.get('currency')?.value
         : undefined,
-      shops: [],
-      categories: [],
+      categoryId: categoryId,
       description: this.firstFormGroup.get('description')?.value,
     };
     const productReq: Observable<ProductDTO> = new Observable<ProductDTO>(
@@ -239,64 +214,6 @@ export class AddProductComponent implements OnInit {
               subscriber.complete();
             });
           }
-        }),
-        mergeMap((product) => {
-          this.progressMessage = 'Creating shops...';
-          let obs = new Observable<ProductDTO>((subscriber) => {
-            subscriber.next(product);
-            subscriber.complete();
-          });
-          if (shopsCreateReq.length > 0) {
-            obs = obs.pipe(
-              mergeMap((product) => {
-                return forkJoin(shopsCreateReq).pipe(
-                  map((shops) => {
-                    shops.forEach((shop) => product.shops?.push(shop));
-                    return product;
-                  })
-                );
-              })
-            );
-          }
-          if (shopsIds.length > 0) {
-            obs = obs.pipe(
-              map((product) => {
-                shopsIds.forEach((id) => product.shops?.push({ id }));
-                return product;
-              })
-            );
-          }
-          return obs;
-        }),
-        mergeMap((product) => {
-          this.progressMessage = 'Creating categories...';
-          let obs = new Observable<ProductDTO>((subscriber) => {
-            subscriber.next(product);
-            subscriber.complete();
-          });
-          if (categoriesCreateReq.length > 0) {
-            obs = obs.pipe(
-              mergeMap((product) => {
-                return forkJoin(categoriesCreateReq).pipe(
-                  map((categories) => {
-                    categories.forEach((category) =>
-                      product.categories?.push(category)
-                    );
-                    return product;
-                  })
-                );
-              })
-            );
-          }
-          if (categoriesIds.length > 0) {
-            obs = obs.pipe(
-              map((product) => {
-                categoriesIds.forEach((id) => product.categories?.push({ id }));
-                return product;
-              })
-            );
-          }
-          return obs;
         }),
         mergeMap((product) => {
           this.progressMessage = 'Creating image preview...';
@@ -344,6 +261,33 @@ export class AddProductComponent implements OnInit {
               subscriber.complete();
             });
           }
+        }),
+        mergeMap((product) => {
+          this.progressMessage = 'Creating shops...';
+          let obs = new Observable<ShopDTO[]>((subscriber) => {
+            subscriber.next([]);
+            subscriber.complete();
+          });
+          if (shopsCreateReq.length > 0) {
+            obs = obs.pipe(
+              mergeMap((prod) => {
+                return forkJoin(shopsCreateReq);
+              })
+            );
+          }
+          return obs.pipe(
+            mergeMap((shops) => {
+              let ids: number[] = shops.map((it) => it.id ?? 0);
+              ids = [...ids, ...shopsIds];
+              return this.productService
+                .addShopsToProductUsingPOST(product.id ?? 0, ids)
+                .pipe(
+                  map(() => {
+                    return product;
+                  })
+                );
+            })
+          );
         })
       )
       .subscribe(
@@ -357,34 +301,20 @@ export class AddProductComponent implements OnInit {
       );
   }
 
-  removeCategory(event: Event, category: string): void {
-    event.stopPropagation();
-    const it = this.categoriesToAdd.find((it) => it === category);
-    if (it) {
-      const i = this.categoriesToAdd.indexOf(it);
-      this.categoriesToAdd.splice(i, 1);
-    }
-    this.categoryNames = this.categories
-      .filter(
-        (it) => this.categoriesToAdd.find((i) => it.name === i) === undefined
-      )
-      .map((it) => (it.name ? it.name : ''));
-  }
-
   removeImage(event: Event, image: string): void {
     event.stopPropagation();
-    const it = this.imagesToAdd.find((it) => it === image);
-    if (it) {
-      const i = this.imagesToAdd.indexOf(it);
+    const imgToRemove = this.imagesToAdd.find((it) => it === image);
+    if (imgToRemove) {
+      const i = this.imagesToAdd.indexOf(imgToRemove);
       this.imagesToAdd.splice(i, 1);
     }
   }
 
   removeShop(event: Event, shop: string): void {
     event.stopPropagation();
-    const it = this.shopsToAdd.find((it) => it === shop);
-    if (it) {
-      const i = this.shopsToAdd.indexOf(it);
+    const shopToRemove = this.shopsToAdd.find((it) => it === shop);
+    if (shopToRemove) {
+      const i = this.shopsToAdd.indexOf(shopToRemove);
       this.shopsToAdd.splice(i, 1);
     }
     this.shopsNames = this.shops

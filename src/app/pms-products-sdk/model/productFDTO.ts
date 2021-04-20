@@ -9,9 +9,12 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { AttributeEntryFDTO } from './attributeEntryFDTO';
+import { ShopDTO } from './shopDTO';
 
 
-export interface ProductDTO { 
+export interface ProductFDTO { 
+    attributeEntries?: Array<AttributeEntryFDTO>;
     brandId?: number;
     brandName?: string;
     categoryId?: number;
@@ -24,5 +27,6 @@ export interface ProductDTO {
     previewImageId?: number;
     previewImageUrl?: string;
     price?: number;
+    shops?: Array<ShopDTO>;
     subtitle?: string;
 }

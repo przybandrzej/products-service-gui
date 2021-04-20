@@ -9,10 +9,11 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { AttributeTypeDTO } from './attributeTypeDTO';
 
 
-export interface CategoryDTO { 
+export interface AttributeFDTO { 
+    attributeType?: AttributeTypeDTO;
     id?: number;
     name?: string;
-    parentCategoryId?: number;
 }
