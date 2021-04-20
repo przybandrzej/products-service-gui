@@ -5,12 +5,14 @@ import { HttpClient } from '@angular/common/http';
 
 import { AttributeEntryResourceService } from './api/attributeEntryResource.service';
 import { AttributeResourceService } from './api/attributeResource.service';
+import { AttributeTypeResourceService } from './api/attributeTypeResource.service';
 import { BrandResourceService } from './api/brandResource.service';
 import { CategoryResourceService } from './api/categoryResource.service';
 import { CurrencyResourceService } from './api/currencyResource.service';
 import { ImageUrlResourceService } from './api/imageUrlResource.service';
 import { ProductResourceService } from './api/productResource.service';
 import { ShopResourceService } from './api/shopResource.service';
+import { UnitResourceService } from './api/unitResource.service';
 
 @NgModule({
   imports:      [],
@@ -19,12 +21,14 @@ import { ShopResourceService } from './api/shopResource.service';
   providers: [
     AttributeEntryResourceService,
     AttributeResourceService,
+    AttributeTypeResourceService,
     BrandResourceService,
     CategoryResourceService,
     CurrencyResourceService,
     ImageUrlResourceService,
     ProductResourceService,
-    ShopResourceService ]
+    ShopResourceService,
+    UnitResourceService ]
 })
 export class ApiModule {
     public static forRoot(configurationFactory: () => Configuration): ModuleWithProviders<ApiModule> {

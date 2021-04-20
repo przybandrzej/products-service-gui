@@ -1,3 +1,4 @@
+import { ProductFDTO } from './../../../../pms-products-sdk/model/productFDTO';
 import { ProductResourceService } from './../../../../pms-products-sdk/api/productResource.service';
 import { ProductDTO } from './../../../../pms-products-sdk/model/productDTO';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailsComponent implements OnInit {
   public set productId(id: number) {
-    this.productService.getProductUsingGET(id).subscribe((res) => {
+    this.productService.getProductFullInfoUsingGET(id).subscribe((res) => {
       this.product = res;
       if (this.product.previewImageUrl) {
         this.images.push({ url: this.product.previewImageUrl });
@@ -24,7 +25,7 @@ export class ProductDetailsComponent implements OnInit {
       .subscribe((images) => this.images.push.apply(this.images, images));
   }
 
-  public product: ProductDTO = {};
+  public product: ProductFDTO = {};
   public images: ImageUrlDTO[] = [];
 
   private default: string = 'assets/488px-no-image.png';

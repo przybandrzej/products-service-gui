@@ -14,5 +14,6 @@
 export interface AttributeEntryDTO { 
     attributeId?: number;
     id?: number;
+    productId?: number;
     value?: string;
 }

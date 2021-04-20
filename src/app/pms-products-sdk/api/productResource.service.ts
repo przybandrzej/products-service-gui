@@ -20,6 +20,7 @@ import { Observable }                                        from 'rxjs';
 
 import { ImageUrlDTO } from '../model/imageUrlDTO';
 import { ProductDTO } from '../model/productDTO';
+import { ProductFDTO } from '../model/productFDTO';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -56,6 +57,58 @@ export class ProductResourceService {
         return false;
     }
 
+
+    /**
+     * addShopsToProduct
+     * 
+     * @param id id
+     * @param shopIds shopIds
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public addShopsToProductUsingPOST(id: number, shopIds: Array<number>, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public addShopsToProductUsingPOST(id: number, shopIds: Array<number>, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public addShopsToProductUsingPOST(id: number, shopIds: Array<number>, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public addShopsToProductUsingPOST(id: number, shopIds: Array<number>, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling addShopsToProductUsingPOST.');
+        }
+
+        if (shopIds === null || shopIds === undefined) {
+            throw new Error('Required parameter shopIds was null or undefined when calling addShopsToProductUsingPOST.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.post<any>(`${this.basePath}/api/products/${encodeURIComponent(String(id))}/shops`,
+            shopIds,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
 
     /**
      * createProduct
@@ -181,6 +234,47 @@ export class ProductResourceService {
         return this.httpClient.get<Array<ProductDTO>>(`${this.basePath}/api/products`,
             {
                 params: queryParameters,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * getProductFullInfo
+     * 
+     * @param id id
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getProductFullInfoUsingGET(id: number, observe?: 'body', reportProgress?: boolean): Observable<ProductFDTO>;
+    public getProductFullInfoUsingGET(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ProductFDTO>>;
+    public getProductFullInfoUsingGET(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ProductFDTO>>;
+    public getProductFullInfoUsingGET(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling getProductFullInfoUsingGET.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.get<ProductFDTO>(`${this.basePath}/api/products/${encodeURIComponent(String(id))}/full-info`,
+            {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

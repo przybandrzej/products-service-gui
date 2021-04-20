@@ -13,8 +13,7 @@
     <div fxLayout="column" fxFlex fxLayoutGap="12px">
       <div fxLayout="row" fxLayoutGap="6px">
         <app-text-clickable
-          *ngFor="let category of product.categories"
-          [text]="category.name ? category.name : ''"
+          [text]="product.categoryName ? product.categoryName : ''"
           [fontSize]="'15px'"
           [color]="'#b1b1b3'"
           (clicked)="categoryClicked()"
@@ -71,7 +70,9 @@
 
           <div fxFlex class="fancy-table thin-frame-faded6">
             <div *ngFor="let attr of product.attributeEntries">
-              <span>{{ attr.value }}</span>
+              <app-attribute-display
+                [attributeEntry]="attr"
+              ></app-attribute-display>
             </div>
           </div>
         </div>
@@ -82,6 +83,6 @@
   <div fxLayout="column" fxLayoutGap="8px" class="description">
     <span>Description</span>
     <mat-divider></mat-divider>
-    <p>{{ product.description }}</p>
+    <pre>{{ product.description }}</pre>
   </div>
 </div>
