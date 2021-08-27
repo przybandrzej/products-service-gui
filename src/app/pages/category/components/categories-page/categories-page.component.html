@@ -4,6 +4,7 @@
       <div #card *ngFor="let cat of categories">
         <app-category-card
           [category]="cat"
+          [selected]="isSelected(cat)"
           (click)="select($event, cat)"
         ></app-category-card>
       </div>

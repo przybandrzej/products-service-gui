@@ -12,6 +12,9 @@ export class CategoryCardComponent implements OnInit {
     this._category = val;
   }
 
+  @Input('selected')
+  public isSelected: boolean = false;
+
   public get category() {
     return this._category;
   }

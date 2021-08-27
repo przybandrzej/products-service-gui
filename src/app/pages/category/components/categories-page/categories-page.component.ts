@@ -1,3 +1,5 @@
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { DocumentMouseEventService } from './../../../../services/document-mouse-event.service';
 import { SelectedCategoryManagerService } from './../../services/selected-category-manager.service';
 import { CategoryResourceService } from './../../../../pms-products-sdk/api/categoryResource.service';
@@ -96,5 +98,9 @@ export class CategoriesPageComponent implements OnInit, AfterViewInit {
       }
       this.managerService.selected = {};
     });
+  }
+
+  public isSelected(category: CategoryDTO): boolean {
+    return this.managerService.lastSelected === category;
   }
 }

@@ -1,0 +1,44 @@
+.editor {
+  background-color: white;
+  padding: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.overlay {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  opacity: 0.9;
+  z-index: 1001;
+  -webkit-transition: height 0.5s ease-in-out;
+  -moz-transition: height 0.5s ease-in-out;
+  -ms-transition: height 0.5s ease-in-out;
+  -o-transition: height 0.5s ease-in-out;
+  transition: height 0.5s ease-in-out;
+
+  p {
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.overlay.show {
+  height: 100%;
+}
+
+.task-complete {
+  #msg {
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
