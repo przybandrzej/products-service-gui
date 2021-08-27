@@ -1,1 +1,7 @@
-<p>shop-card works!</p>
+<mat-card class="card" matRipple [class.selected]="isSelected">
+  <mat-card-header>
+    <mat-card-title>{{ shop.name }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="content"> </mat-card-content>
+  <mat-card-footer #rippleLock></mat-card-footer>
+</mat-card>

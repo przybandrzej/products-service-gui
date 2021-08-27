@@ -1,1 +1,61 @@
-<p>shop-editor works!</p>
+<div class="editor mat-elevation-z3">
+  <div
+    class="overlay"
+    [class.show]="_showOverlay"
+    [style.background-color]="
+      isCreateSuccess ? 'rgb(72, 218, 161)' : 'rgb(219, 57, 84)'
+    "
+  >
+    <p>{{ statusMessage }}</p>
+  </div>
+  <div fxLayout="row" fxLayoutGap="24px">
+    <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex>
+      <div fxLayout="row" fxLayoutAlign="start stretch" *ngIf="!createMode">
+        <app-text-with-label-editable
+          fxFlex="80%"
+          [icon]="'badge'"
+          [label]="'Name'"
+          [text]="shopName"
+          (edited)="saveName($event)"
+          [editSuccess]="isEditedSuccess"
+          [showEditedStatus]="showEditOverlay && editedName"
+          (editStatusShown)="editNameShown()"
+        ></app-text-with-label-editable>
+      </div>
+      <div
+        *ngIf="createMode"
+        fxLayout="row"
+        fxLayoutGap="30px"
+        fxLayoutAlign="start center"
+      >
+        <app-input
+          fxFlex
+          [icon]="'badge'"
+          [label]="'Name'"
+          [(text)]="shopName"
+        ></app-input>
+        <button
+          id="create-button"
+          mat-raised-button
+          color="accent"
+          (click)="create($event)"
+        >
+          Create
+        </button>
+      </div>
+      <div fxLayout="row">
+        <div class="attributes" fxFlex="80%" fxLayout="row">
+          <div
+            id="inputs"
+            *ngIf="!createMode"
+            fxLayout="column"
+            fxLayoutGap="8px"
+            fxFlex="100%"
+          >
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

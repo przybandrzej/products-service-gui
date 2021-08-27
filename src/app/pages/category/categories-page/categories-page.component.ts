@@ -1,5 +1,3 @@
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 import { DocumentMouseEventService } from '../../../services/document-mouse-event.service';
 import { SelectedCategoryManagerService } from '../services/selected-category-manager.service';
 import { CategoryResourceService } from '../../../pms-products-sdk/api/categoryResource.service';

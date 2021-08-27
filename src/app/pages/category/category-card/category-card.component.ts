@@ -1,12 +1,12 @@
 import { CategoryDTO } from '../../../pms-products-sdk/model/categoryDTO';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-category-card',
   templateUrl: './category-card.component.html',
   styleUrls: ['./category-card.component.scss'],
 })
-export class CategoryCardComponent implements OnInit {
+export class CategoryCardComponent {
   @Input('category')
   public set category(val: CategoryDTO) {
     this._category = val;
@@ -20,8 +20,4 @@ export class CategoryCardComponent implements OnInit {
   }
 
   private _category: CategoryDTO = {};
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

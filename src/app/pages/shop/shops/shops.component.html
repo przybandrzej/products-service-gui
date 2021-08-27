@@ -1,1 +1,21 @@
-<p>shops works!</p>
+<div fxLayout="column">
+  <div class="content" fxLayout="row" fxLayoutAlign="space-between start">
+    <div fxLayout="column" fxFlex="30%" cdkScrollable id="list">
+      <div #card *ngFor="let shop of shops">
+        <app-shop-card
+          [shop]="shop"
+          [selected]="isSelected(shop)"
+          (click)="select($event, shop)"
+        ></app-shop-card>
+      </div>
+      <app-error-banner *ngIf="error"></app-error-banner>
+    </div>
+    <div fxFlex="15%"></div>
+    <div #editor fxFlex="55%">
+      <app-shop-editor
+        (edited)="edited($event)"
+        (created)="created($event)"
+      ></app-shop-editor>
+    </div>
+  </div>
+</div>
