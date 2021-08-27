@@ -1,17 +1,17 @@
-import { ShopModule } from './../shop.module';
-import { ShopDTO } from './../../../pms-products-sdk/model/shopDTO';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BrandDTO } from './../../../pms-products-sdk/model/brandDTO';
 import { Injectable } from '@angular/core';
+import { BrandModule } from '../brand.module';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: ShopModule
+  providedIn: BrandModule
 })
-export class SelectedShopManagerService {
+export class SelectedBrandManagerService {
 
-  private selectedShopSubject: BehaviorSubject<ShopDTO> = new BehaviorSubject(
+  private selectedBrandSubject: BehaviorSubject<BrandDTO> = new BehaviorSubject(
     {}
   );
-  private _$selectedShop: Observable<ShopDTO> = this.selectedShopSubject.asObservable();
+  private _$selectedBrand: Observable<BrandDTO> = this.selectedBrandSubject.asObservable();
 
   private createdSubject: Subject<boolean> = new Subject();
   private _$created: Observable<boolean> = this.createdSubject.asObservable();
@@ -19,8 +19,8 @@ export class SelectedShopManagerService {
   private editedSubject: Subject<boolean> = new Subject();
   private _$edited: Observable<boolean> = this.editedSubject.asObservable();
 
-  public get $selectedShop() {
-    return this._$selectedShop;
+  public get $selectedBrand() {
+    return this._$selectedBrand;
   }
 
   public get $created() {
@@ -39,11 +39,11 @@ export class SelectedShopManagerService {
     this.editedSubject.next(success);
   }
 
-  public set selected(shop: ShopDTO) {
-    this.selectedShopSubject.next(shop);
+  public set selected(Brand: BrandDTO) {
+    this.selectedBrandSubject.next(Brand);
   }
 
   public get lastSelected() {
-    return this.selectedShopSubject.value;
+    return this.selectedBrandSubject.value;
   }
 }
