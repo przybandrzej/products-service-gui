@@ -1,0 +1,15 @@
+.content {
+  padding-top: 0.5em;
+}
+
+.card {
+  cursor: pointer;
+}
+
+.mat-card .last-child {
+  margin-bottom: 0;
+}
+
+.card.selected {
+  background-color: rgba(145, 145, 151, 0.3);
+}

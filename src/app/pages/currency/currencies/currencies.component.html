@@ -1,1 +1,21 @@
-<p>currencies works!</p>
+<div fxLayout="column">
+  <div class="content" fxLayout="row" fxLayoutAlign="space-between start">
+    <div fxLayout="column" fxFlex="30%" cdkScrollable id="list">
+      <div #card *ngFor="let currency of currencies">
+        <app-currency-card
+          [currency]="currency"
+          [selected]="isSelected(currency)"
+          (click)="select($event, currency)"
+        ></app-currency-card>
+      </div>
+      <app-error-banner *ngIf="error"></app-error-banner>
+    </div>
+    <div fxFlex="15%"></div>
+    <div #editor fxFlex="55%">
+      <app-currency-editor
+        (edited)="edited($event)"
+        (created)="created($event)"
+      ></app-currency-editor>
+    </div>
+  </div>
+</div>
