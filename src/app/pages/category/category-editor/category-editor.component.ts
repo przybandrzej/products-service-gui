@@ -1,7 +1,7 @@
-import { CategoryResourceService } from './../../../../pms-products-sdk/api/categoryResource.service';
-import { SelectedCategoryManagerService } from './../../services/selected-category-manager.service';
+import { CategoryResourceService } from '../../../pms-products-sdk/api/categoryResource.service';
+import { SelectedCategoryManagerService } from '../services/selected-category-manager.service';
 import { Subscription } from 'rxjs';
-import { CategoryDTO } from './../../../../pms-products-sdk/model/categoryDTO';
+import { CategoryDTO } from '../../../pms-products-sdk/model/categoryDTO';
 import {
   Component,
   EventEmitter,

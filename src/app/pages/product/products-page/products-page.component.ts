@@ -1,9 +1,7 @@
-import { DocumentMouseEventService } from './../../../../services/document-mouse-event.service';
 import {
   ProductTooltipComponent,
-  TooltipData,
 } from './../product-tooltip/product-tooltip.component';
-import { ProductResourceService } from './../../../../pms-products-sdk/api/productResource.service';
+import { ProductResourceService } from './../../../pms-products-sdk/api/productResource.service';
 import {
   Component,
   ComponentRef,
@@ -11,7 +9,6 @@ import {
   QueryList,
   ViewChildren,
   ElementRef,
-  AfterViewInit,
   OnDestroy,
 } from '@angular/core';
 import { ProductDTO } from 'src/app/pms-products-sdk';
@@ -21,7 +18,6 @@ import {
   OverlayPositionBuilder,
   OverlayRef,
 } from '@angular/cdk/overlay';
-import { ComponentPortal } from '@angular/cdk/portal';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
 @Component({

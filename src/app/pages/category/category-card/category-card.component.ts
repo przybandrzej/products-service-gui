@@ -1,4 +1,4 @@
-import { CategoryDTO } from './../../../../pms-products-sdk/model/categoryDTO';
+import { CategoryDTO } from '../../../pms-products-sdk/model/categoryDTO';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({

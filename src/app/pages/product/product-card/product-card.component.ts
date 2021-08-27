@@ -1,4 +1,4 @@
-import { ProductDTO } from './../../../../pms-products-sdk/model/productDTO';
+import { ProductDTO } from '../../../pms-products-sdk/model/productDTO';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({

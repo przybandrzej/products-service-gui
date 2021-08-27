@@ -2,7 +2,6 @@ import { TextWithLabelEditableComponent } from './components/text-with-label-edi
 import { TextWithLabelComponent } from './components/text-with-label/text-with-label.component';
 import { InputComponent } from './components/input/input.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
@@ -31,7 +30,6 @@ import { ErrorBannerComponent } from './components/error-banner/error-banner.com
     CommonModule,
     FlexLayoutModule,
     MaterialModule,
-    BrowserAnimationsModule,
   ],
   exports: [
     OnhoverClassDirective,

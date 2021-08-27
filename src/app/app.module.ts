@@ -1,3 +1,5 @@
+import { SharedModule } from './shared/shared.module';
+import { ShopModule } from './pages/shop/shop.module';
 import { CategoryModule } from './pages/category/category.module';
 import { ProductModule } from './pages/product/product.module';
 import { MaterialModule } from './material.module';
@@ -29,6 +31,8 @@ export function getAPIConfiguration() {
     ApiModule.forRoot(getAPIConfiguration),
     ProductModule,
     CategoryModule,
+    ShopModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent],

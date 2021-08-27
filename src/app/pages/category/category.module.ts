@@ -1,19 +1,23 @@
+import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Configuration, ApiModule } from './../../pms-products-sdk/';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './../../material.module';
 import { SharedModule } from './../../shared/shared.module';
-import { environment } from 'src/environments/environment';
-import { CategoriesPageComponent } from './components/categories-page/categories-page.component';
-import { CategoryCardComponent } from './components/category-card/category-card.component';
-import { CategoryEditorComponent } from './components/category-editor/category-editor.component';
+import { CategoriesPageComponent } from './categories-page/categories-page.component';
+import { CategoryCardComponent } from './category-card/category-card.component';
+import { CategoryEditorComponent } from './category-editor/category-editor.component';
 
-export function getAPIConfiguration() {
-  return new Configuration({ basePath: environment.api_url });
-}
+const routes: Routes = [
+  {
+    path: '',
+    component: CategoriesPageComponent,
+  },
+  {
+    path: ':id',
+    component: CategoriesPageComponent,
+  },
+];
 
 @NgModule({
   declarations: [
@@ -25,10 +29,8 @@ export function getAPIConfiguration() {
     CommonModule,
     MaterialModule,
     FlexLayoutModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    ApiModule.forRoot(getAPIConfiguration),
     SharedModule,
+    RouterModule.forChild(routes),
   ],
   exports: [CategoriesPageComponent],
 })

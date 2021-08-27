@@ -1,6 +1,5 @@
-import { ProductFDTO } from './../../../../pms-products-sdk/model/productFDTO';
-import { ProductResourceService } from './../../../../pms-products-sdk/api/productResource.service';
-import { ProductDTO } from './../../../../pms-products-sdk/model/productDTO';
+import { ProductFDTO } from './../../../pms-products-sdk/model/productFDTO';
+import { ProductResourceService } from './../../../pms-products-sdk/api/productResource.service';
 import { Component, OnInit } from '@angular/core';
 import { ImageUrlDTO } from 'src/app/pms-products-sdk';
 import { ActivatedRoute } from '@angular/router';

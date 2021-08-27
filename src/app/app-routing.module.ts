@@ -1,7 +1,3 @@
-import { CategoriesPageComponent } from './pages/category/components/categories-page/categories-page.component';
-import { AddProductComponent } from './pages/product/components/add-product/add-product.component';
-import { ProductDetailsComponent } from './pages/product/components/product-details/product-details.component';
-import { ProductsPageComponent } from './pages/product/components/products-page/products-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -13,19 +9,21 @@ const routes: Routes = [
   },
   {
     path: 'products',
-    component: ProductsPageComponent,
-  },
-  {
-    path: 'products/create',
-    component: AddProductComponent,
-  },
-  {
-    path: 'products/:id',
-    component: ProductDetailsComponent,
+    loadChildren: () =>
+      import('./pages/product/product.module').then((m) => m.ProductModule),
+    canActivate: [],
   },
   {
     path: 'categories',
-    component: CategoriesPageComponent,
+    loadChildren: () =>
+      import('./pages/category/category.module').then((m) => m.CategoryModule),
+    canActivate: [],
+  },
+  {
+    path: 'shops',
+    loadChildren: () =>
+      import('./pages/shop/shop.module').then((m) => m.ShopModule),
+    canActivate: [],
   },
 ];
 
