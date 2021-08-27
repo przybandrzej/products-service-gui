@@ -1,12 +1,10 @@
 import { CategoryDTO } from './../../../pms-products-sdk/model/categoryDTO';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { CategoryModule } from '../category.module';
 
-@Injectable({
-  providedIn: CategoryModule
-})
+@Injectable({providedIn: 'root'})
 export class SelectedCategoryManagerService {
+
   private selectedCatSubject: BehaviorSubject<CategoryDTO> = new BehaviorSubject(
     {}
   );

@@ -1,3 +1,4 @@
+import { SelectedBrandManagerService } from './services/selected-brand-manager.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrandCardComponent } from './brand-card/brand-card.component';
@@ -10,6 +11,7 @@ import { BrandsComponent } from './brands/brands.component';
   declarations: [BrandCardComponent, BrandEditorComponent, BrandsComponent],
   imports: [
     CommonModule
-  ]
+  ],
+  providers: [SelectedBrandManagerService]
 })
 export class BrandModule { }

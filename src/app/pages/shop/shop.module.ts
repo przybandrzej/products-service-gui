@@ -1,3 +1,4 @@
+import { SelectedShopManagerService } from './services/selected-shop-manager.service';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -31,6 +32,7 @@ const routes: Routes = [
     HttpClientModule,
     SharedModule
   ],
-  exports: [ShopsComponent]
+  exports: [ShopsComponent],
+  providers: [SelectedShopManagerService]
 })
 export class ShopModule { }

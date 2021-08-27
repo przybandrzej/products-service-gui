@@ -1,11 +1,8 @@
-import { ShopModule } from './../shop.module';
 import { ShopDTO } from './../../../pms-products-sdk/model/shopDTO';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: ShopModule
-})
+@Injectable({providedIn: 'root'})
 export class SelectedShopManagerService {
 
   private selectedShopSubject: BehaviorSubject<ShopDTO> = new BehaviorSubject(

@@ -1,11 +1,8 @@
 import { CurrencyDTO } from 'src/app/pms-products-sdk';
 import { Injectable } from '@angular/core';
-import { CurrencyModule } from '../currency.module';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
-@Injectable({
-  providedIn: CurrencyModule
-})
+@Injectable({providedIn: 'root'})
 export class SelectedCurrencyManagerService {
 
   private selectedCurrencySubject: BehaviorSubject<CurrencyDTO> = new BehaviorSubject(

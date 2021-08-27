@@ -1,11 +1,8 @@
 import { BrandDTO } from './../../../pms-products-sdk/model/brandDTO';
 import { Injectable } from '@angular/core';
-import { BrandModule } from '../brand.module';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
-@Injectable({
-  providedIn: BrandModule
-})
+@Injectable({providedIn: 'root'})
 export class SelectedBrandManagerService {
 
   private selectedBrandSubject: BehaviorSubject<BrandDTO> = new BehaviorSubject(

@@ -1,3 +1,4 @@
+import { SelectedCurrencyManagerService } from './services/selected-currency-manager.service';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -27,6 +28,7 @@ const routes: Routes = [
     FlexLayoutModule,
     SharedModule,
     RouterModule.forChild(routes),
-  ]
+  ],
+  providers: [SelectedCurrencyManagerService]
 })
 export class CurrencyModule { }

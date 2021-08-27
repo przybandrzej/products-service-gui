@@ -1,3 +1,4 @@
+import { SelectedCategoryManagerService } from './services/selected-category-manager.service';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -33,5 +34,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
   exports: [CategoriesPageComponent],
+  providers: [SelectedCategoryManagerService]
 })
 export class CategoryModule {}
