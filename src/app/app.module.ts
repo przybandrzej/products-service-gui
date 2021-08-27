@@ -14,13 +14,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ApiModule, Configuration } from './pms-products-sdk';
 import { environment } from 'src/environments/environment';
+import { MenuComponent } from './menu/menu.component';
 
 export function getAPIConfiguration() {
   return new Configuration({ basePath: environment.api_url });
 }
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MenuComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
