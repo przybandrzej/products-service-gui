@@ -47,6 +47,7 @@ const routes: Routes = [
     redirectTo: '',
     pathMatch: 'full',
   },
+  { path: 'not-found', loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundModule) },
 ];
 
 @NgModule({
