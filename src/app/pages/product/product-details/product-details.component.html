@@ -70,9 +70,9 @@
 
           <div fxFlex class="fancy-table thin-frame-faded6">
             <div *ngFor="let attr of product.attributeEntries">
-              <app-attribute-display
-                [attributeEntry]="attr"
-              ></app-attribute-display>
+              <app-attribute-entry-view
+                [attribute]="attr"
+              ></app-attribute-entry-view>
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'menu',
-    component: MenuComponent
+    component: MenuComponent,
   },
   {
     path: 'products',
@@ -41,6 +41,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/brand/brand.module').then((m) => m.BrandModule),
     canActivate: [],
+  },
+  {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full',
   },
 ];
 

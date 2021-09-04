@@ -1,7 +1,4 @@
 import { SharedModule } from './shared/shared.module';
-import { ShopModule } from './pages/shop/shop.module';
-import { CategoryModule } from './pages/category/category.module';
-import { ProductModule } from './pages/product/product.module';
 import { MaterialModule } from './material.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -30,10 +27,7 @@ export function getAPIConfiguration() {
     HttpClientModule,
     FlexLayoutModule,
     ApiModule.forRoot(getAPIConfiguration),
-    ProductModule,
-    CategoryModule,
-    ShopModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

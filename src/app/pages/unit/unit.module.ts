@@ -1,4 +1,4 @@
-import { SelectedShopManagerService } from './services/selected-shop-manager.service';
+import { SelectedUnitManagerService } from './services/selected-unit-manager.service';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -7,23 +7,21 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './../../material.module';
 import { SharedModule } from './../../shared/shared.module';
 
-import { ShopsComponent } from './shops/shops.component';
-import { ShopCardComponent } from './shop-card/shop-card.component';
-import { ShopEditorComponent } from './shop-editor/shop-editor.component';
+import { UnitsComponent } from './units/units.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ShopsComponent,
+    component: UnitsComponent,
   },
   {
     path: ':id',
-    component: ShopsComponent,
+    component: UnitsComponent,
   },
 ];
 
 @NgModule({
-  declarations: [ShopsComponent, ShopCardComponent, ShopEditorComponent],
+  declarations: [UnitsComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -32,6 +30,6 @@ const routes: Routes = [
     HttpClientModule,
     SharedModule,
   ],
-  providers: [SelectedShopManagerService],
+  providers: [SelectedUnitManagerService],
 })
-export class ShopModule {}
+export class UnitModule {}

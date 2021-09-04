@@ -10,8 +10,9 @@ import { OnhoverClassDirective } from './directives/onhover-class.directive';
 import { TextClickableComponent } from './components/text-clickable/text-clickable.component';
 import { AddCardComponent } from './components/add-card/add-card.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
-import { AttributeDisplayComponent } from './components/attribute-display/attribute-display.component';
 import { ErrorBannerComponent } from './components/error-banner/error-banner.component';
+import { AttributeViewComponent } from './components/attribute-view/attribute-view.component';
+import { AttributeEntryViewComponent } from './components/attribute-entry-view/attribute-entry-view.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +24,11 @@ import { ErrorBannerComponent } from './components/error-banner/error-banner.com
     TextClickableComponent,
     AddCardComponent,
     AutocompleteComponent,
-    AttributeDisplayComponent,
     ErrorBannerComponent,
+    AttributeViewComponent,
+    AttributeEntryViewComponent,
   ],
-  imports: [
-    CommonModule,
-    FlexLayoutModule,
-    MaterialModule,
-  ],
+  imports: [CommonModule, FlexLayoutModule, MaterialModule],
   exports: [
     OnhoverClassDirective,
     CarouselComponent,
@@ -40,8 +38,9 @@ import { ErrorBannerComponent } from './components/error-banner/error-banner.com
     TextClickableComponent,
     AddCardComponent,
     AutocompleteComponent,
-    AttributeDisplayComponent,
     ErrorBannerComponent,
+    AttributeViewComponent,
+    AttributeEntryViewComponent,
   ],
 })
 export class SharedModule {}

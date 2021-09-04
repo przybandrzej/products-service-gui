@@ -34,7 +34,6 @@ const routes: Routes = [
     ProductTooltipComponent,
     AddProductComponent,
   ],
-  exports: [ProductsPageComponent],
   imports: [
     CommonModule,
     MaterialModule,

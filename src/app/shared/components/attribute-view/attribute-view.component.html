@@ -1,0 +1,14 @@
+<div class="thin-frame-r4 attr" fxLayout="row" fxLayoutGap="12px">
+  <app-text-with-label-editable
+    [text]="'Name'"
+    [label]="attribute.name ? attribute.name : ''"
+  ></app-text-with-label-editable>
+  <mat-form-field>
+    <mat-label>Type</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let type of types"
+        >{{ type.name }} // {{ type.units }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+</div>

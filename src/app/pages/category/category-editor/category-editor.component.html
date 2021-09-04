@@ -52,7 +52,12 @@
             fxLayoutGap="8px"
             fxFlex="100%"
           >
-            
+            <app-attribute-view
+              *ngFor="let attr of category.attributes"
+              [attribute]="attr"
+              [types]="attributeTypes"
+            >
+            </app-attribute-view>
           </div>
         </div>
       </div>

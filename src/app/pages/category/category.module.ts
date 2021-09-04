@@ -33,7 +33,6 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes),
   ],
-  exports: [CategoriesPageComponent],
-  providers: [SelectedCategoryManagerService]
+  providers: [SelectedCategoryManagerService],
 })
 export class CategoryModule {}

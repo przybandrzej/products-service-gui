@@ -9,11 +9,13 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { UnitDTO } from './unitDTO';
 
 
 export interface AttributeEntryDTO { 
     attributeId?: number;
     id?: number;
     productId?: number;
+    unit?: UnitDTO;
     value?: string;
 }

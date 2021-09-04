@@ -5,6 +5,7 @@ export * from './attributeFDTO';
 export * from './attributeTypeDTO';
 export * from './brandDTO';
 export * from './categoryDTO';
+export * from './categoryFDTO';
 export * from './currencyDTO';
 export * from './imageUrlDTO';
 export * from './productDTO';

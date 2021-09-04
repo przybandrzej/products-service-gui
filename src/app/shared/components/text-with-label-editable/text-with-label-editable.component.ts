@@ -5,7 +5,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   templateUrl: './text-with-label-editable.component.html',
   styleUrls: ['./text-with-label-editable.component.scss'],
 })
-export class TextWithLabelEditableComponent implements OnInit {
+export class TextWithLabelEditableComponent {
   public editMode = false;
   public _showOverlay = false;
 
@@ -48,10 +48,6 @@ export class TextWithLabelEditableComponent implements OnInit {
   public editStatusShownEvent: EventEmitter<void> = new EventEmitter();
 
   public inputValue: string = '';
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   private setup() {
     this._showOverlay = false;

@@ -22,18 +22,38 @@
           (editStatusShown)="editNameShown()"
         ></app-text-with-label-editable>
       </div>
+      <div fxLayout="row" fxLayoutAlign="start stretch" *ngIf="!createMode">
+        <app-text-with-label-editable
+          fxFlex="80%"
+          [icon]="'euro'"
+          [label]="'Symbol'"
+          [text]="currencySymbol"
+          (edited)="saveSymbol($event)"
+          [editSuccess]="isEditedSuccess"
+          [showEditedStatus]="showEditOverlay && editedSymbol"
+          (editStatusShown)="editSymbolShown()"
+        ></app-text-with-label-editable>
+      </div>
       <div
         *ngIf="createMode"
         fxLayout="row"
         fxLayoutGap="30px"
         fxLayoutAlign="start center"
       >
+      <div fxLayout="column">
         <app-input
           fxFlex
           [icon]="'badge'"
           [label]="'Name'"
           [(text)]="currencyName"
         ></app-input>
+        <app-input
+          fxFlex
+          [icon]="'euro'"
+          [label]="'Symbol'"
+          [(text)]="currencySymbol"
+        ></app-input>
+      </div>
         <button
           id="create-button"
           mat-raised-button
@@ -42,19 +62,6 @@
         >
           Create
         </button>
-      </div>
-      <div fxLayout="row">
-        <div class="attributes" fxFlex="80%" fxLayout="row">
-          <div
-            id="inputs"
-            *ngIf="!createMode"
-            fxLayout="column"
-            fxLayoutGap="8px"
-            fxFlex="100%"
-          >
-            
-          </div>
-        </div>
       </div>
     </div>
   </div>

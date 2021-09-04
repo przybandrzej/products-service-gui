@@ -27,6 +27,7 @@ export class CurrencyEditorComponent implements OnInit {
       this.createMode = false;
     }
     this.currencyName = this._currency.name ?? '';
+    this.currencySymbol = this._currency.symbol ?? '';
   }
 
   public get currency() {
@@ -49,7 +50,9 @@ export class CurrencyEditorComponent implements OnInit {
   public _showOverlay: boolean = false;
   public showEditOverlay: boolean = false;
   public editedName: boolean = false;
+  public editedSymbol: boolean = false;
   public currencyName: string = '';
+  public currencySymbol: string = '';
 
   constructor(
     private managerService: SelectedCurrencyManagerService,
@@ -118,5 +121,15 @@ export class CurrencyEditorComponent implements OnInit {
   public editNameShown(): void {
     this.showEditStatus = false;
     this.editedName = false;
+  }
+
+  public saveSymbol(name: string): void {
+    this._currency.symbol = name;
+    this.editedEvent.emit(this._currency);
+  }
+
+  public editSymbolShown(): void {
+    this.showEditStatus = false;
+    this.editedSymbol = false;
   }
 }

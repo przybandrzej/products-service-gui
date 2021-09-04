@@ -10,13 +10,11 @@
  * Do not edit the class manually.
  */
 import { AttributeFDTO } from './attributeFDTO';
-import { UnitDTO } from './unitDTO';
 
 
-export interface AttributeEntryFDTO { 
-    attribute?: AttributeFDTO;
+export interface CategoryFDTO { 
+    attributes?: Array<AttributeFDTO>;
     id?: number;
-    productId?: number;
-    unit?: UnitDTO;
-    value?: string;
+    name?: string;
+    parentCategoryId?: number;
 }
