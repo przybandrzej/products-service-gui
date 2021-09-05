@@ -1,0 +1,13 @@
+<div class="container" fxLayout="row" fxLayoutAlign="start stretch">
+  <input
+    type="text"
+    name="search"
+    [placeholder]="placeholder"
+    (input)="changedValue($event)"
+    (keyup.enter)="enter($event)"
+    [value]="value"
+  />
+  <button class="btn-search">
+    <i class="fa fa-search"></i>
+  </button>
+</div>

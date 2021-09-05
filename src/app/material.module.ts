@@ -32,6 +32,7 @@ import { FlexModule } from '@angular/flex-layout';
 import { MatChipsModule } from '@angular/material/chips';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 const MODULES = [
   MatIconModule,
@@ -68,6 +69,7 @@ const MODULES = [
   OverlayModule,
   MatIconModule,
   MatStepperModule,
+  MatSidenavModule,
 ];
 
 @NgModule({

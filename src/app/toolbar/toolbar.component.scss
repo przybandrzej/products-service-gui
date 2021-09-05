@@ -1,0 +1,71 @@
+.container {
+  width: 100%;
+  height: 80px;
+  padding: 16px 64px;
+}
+
+.logo-container {
+  height: 100%;
+  cursor: pointer;
+
+  div {
+    max-width: 100%;
+    max-height: 100%;
+    height: 100%;
+
+    .logo {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  h1 {
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+}
+
+#links {
+  height: 100%;
+  div {
+    padding: 0 16px;
+    cursor: pointer;
+    height: 100%;
+    border-radius: 4px;
+
+    h3 {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.cta {
+  .sign-up {
+    padding: 0 24px;
+    cursor: pointer;
+    height: 100%;
+    border-radius: 24px;
+    background-color: #fc3550;
+
+    h3 {
+      margin-bottom: 0;
+      color: #faf0f1;
+    }
+  }
+
+  .sign-in {
+    padding: 0 24px;
+    cursor: pointer;
+    height: 100%;
+    border-radius: 24px;
+    background-color: #faf0f1;
+
+    h3 {
+      margin-bottom: 0;
+      color: #fc3550;
+    }
+  }
+}

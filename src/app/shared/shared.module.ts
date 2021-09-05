@@ -13,6 +13,7 @@ import { AutocompleteComponent } from './components/autocomplete/autocomplete.co
 import { ErrorBannerComponent } from './components/error-banner/error-banner.component';
 import { AttributeViewComponent } from './components/attribute-view/attribute-view.component';
 import { AttributeEntryViewComponent } from './components/attribute-entry-view/attribute-entry-view.component';
+import { SearchInputComponent } from './components/search-input/search-input.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AttributeEntryViewComponent } from './components/attribute-entry-view/a
     ErrorBannerComponent,
     AttributeViewComponent,
     AttributeEntryViewComponent,
+    SearchInputComponent,
   ],
   imports: [CommonModule, FlexLayoutModule, MaterialModule],
   exports: [
@@ -41,6 +43,7 @@ import { AttributeEntryViewComponent } from './components/attribute-entry-view/a
     ErrorBannerComponent,
     AttributeViewComponent,
     AttributeEntryViewComponent,
+    SearchInputComponent,
   ],
 })
 export class SharedModule {}

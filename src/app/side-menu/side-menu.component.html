@@ -1,0 +1,37 @@
+<nav
+  class="main-menu mat-elevation-z4"
+  fxLayout="column"
+  fxLayoutAlign="space-between stretch"
+>
+  <ul>
+    <li *ngFor="let element of elements">
+      <a
+        (click)="clickedElement($event, element)"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+      >
+        <div class="nav-icon" fxLayout="column" fxLayoutAlign="center center">
+          <mat-icon>{{ element.icon }}</mat-icon>
+        </div>
+
+        <span class="nav-text"> {{ element.label }} </span>
+      </a>
+    </li>
+  </ul>
+
+  <ul>
+    <li *ngFor="let element of bottomElements">
+      <a
+        (click)="clickedElement($event, element)"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+      >
+        <div class="nav-icon" fxLayout="column" fxLayoutAlign="center center">
+          <mat-icon>{{ element.icon }}</mat-icon>
+        </div>
+
+        <span class="nav-text"> {{ element.label }} </span>
+      </a>
+    </li>
+  </ul>
+</nav>

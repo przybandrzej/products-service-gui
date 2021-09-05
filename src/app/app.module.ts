@@ -12,13 +12,20 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ApiModule, Configuration } from './pms-products-sdk';
 import { environment } from 'src/environments/environment';
 import { MenuComponent } from './menu/menu.component';
+import { SideMenuComponent } from './side-menu/side-menu.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 export function getAPIConfiguration() {
   return new Configuration({ basePath: environment.api_url });
 }
 
 @NgModule({
-  declarations: [AppComponent, MenuComponent],
+  declarations: [
+    AppComponent,
+    MenuComponent,
+    SideMenuComponent,
+    ToolbarComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

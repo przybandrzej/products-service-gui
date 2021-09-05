@@ -1,0 +1,70 @@
+<div class="container" fxLayout="row" fxLayoutAlign="space-between stretch">
+  <div
+    class="nav"
+    fxLayout="row"
+    fxLayoutGap="64px"
+    fxLayoutAlign="start center"
+  >
+    <div
+      class="logo-container"
+      fxLayout="row"
+      fxLayoutGap="16px"
+      fxLayoutAlign="start center"
+      [routerLink]="'/'"
+    >
+      <div>
+        <img class="logo" src="assets/icons/inventory.png" alt="Brand logo" />
+      </div>
+      <h1>LeafPS</h1>
+    </div>
+
+    <div
+      id="links"
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      fxLayoutGap="16px"
+    >
+      <div
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        onhoverClass="mat-elevation-z6"
+      >
+        <h3>Produkty</h3>
+      </div>
+      <div
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        onhoverClass="mat-elevation-z6"
+      >
+        <h3>Marki</h3>
+      </div>
+      <div
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        onhoverClass="mat-elevation-z6"
+      >
+        <h3>Sklepy</h3>
+      </div>
+    </div>
+
+    <app-search-input></app-search-input>
+  </div>
+
+  <div class="cta" fxLayout="row" fxLayoutGap="16px">
+    <div
+      class="sign-in mat-elevation-z6"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+    >
+      <h3>Sign in</h3>
+    </div>
+
+    <div
+      class="sign-up mat-elevation-z6"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+    >
+      <h3>Sign up</h3>
+    </div>
+  </div>
+</div>
