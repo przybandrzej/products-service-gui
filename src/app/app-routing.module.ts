@@ -5,12 +5,19 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/products',
-    pathMatch: 'full',
+    loadChildren: () =>
+      import('./pages/landing/landing.module').then((m) => m.LandingModule),
   },
   {
     path: 'menu',
     component: MenuComponent,
+  },
+  {
+    path: 'not-found',
+    loadChildren: () =>
+      import('./pages/not-found/not-found.module').then(
+        (m) => m.NotFoundModule
+      ),
   },
   {
     path: 'products',
@@ -43,11 +50,10 @@ const routes: Routes = [
     canActivate: [],
   },
   {
-    path: '',
-    redirectTo: '',
+    path: '**',
+    redirectTo: '/not-found',
     pathMatch: 'full',
   },
-  { path: 'not-found', loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundModule) },
 ];
 
 @NgModule({
