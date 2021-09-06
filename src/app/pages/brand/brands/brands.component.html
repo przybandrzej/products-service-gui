@@ -9,6 +9,9 @@
         ></app-brand-card>
       </div>
       <app-error-banner *ngIf="error"></app-error-banner>
+      <div *ngIf="isLoading" fxLayout="column" fxLayoutAlign="center center">
+        <app-loading class="loading"></app-loading>
+      </div>
     </div>
     <div fxFlex="15%"></div>
     <div #editor fxFlex="55%">

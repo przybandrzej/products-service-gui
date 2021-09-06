@@ -1,5 +1,5 @@
 <div fxFlex="100%" fxLayout="column">
-  <div fxLayout="row wrap" fxLayoutGap="10px grid">
+  <div fxLayout="row wrap" fxLayoutGap="10px grid" *ngIf="!isLoading">
     <div
       *ngFor="let product of products"
       #productCard
@@ -20,5 +20,8 @@
       class="add-card"
       (clicked)="addNewProduct()"
     ></app-add-card>
+  </div>
+  <div *ngIf="isLoading" fxLayout="column" fxLayoutAlign="center center">
+    <app-loading class="loading"></app-loading>
   </div>
 </div>

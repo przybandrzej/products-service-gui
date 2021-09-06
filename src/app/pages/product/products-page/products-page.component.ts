@@ -1,6 +1,4 @@
-import {
-  ProductTooltipComponent,
-} from './../product-tooltip/product-tooltip.component';
+import { ProductTooltipComponent } from './../product-tooltip/product-tooltip.component';
 import { ProductResourceService } from './../../../pms-products-sdk/api/productResource.service';
 import {
   Component,
@@ -26,6 +24,8 @@ import { BehaviorSubject, Subscription } from 'rxjs';
   styleUrls: ['./products-page.component.scss'],
 })
 export class ProductsPageComponent implements OnInit, OnDestroy {
+  public isLoading: boolean = true;
+
   public products: ProductDTO[] = [];
   private overlayRef?: OverlayRef;
   public hoveredProduct: BehaviorSubject<ProductDTO>;
@@ -47,9 +47,10 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.productsService
-      .getAllProductsUsingGET()
-      .subscribe((res) => (this.products = res));
+    this.productsService.getAllProductsUsingGET().subscribe((res) => {
+      this.products = res;
+      this.isLoading = false;
+    });
   }
 
   ngOnDestroy(): void {

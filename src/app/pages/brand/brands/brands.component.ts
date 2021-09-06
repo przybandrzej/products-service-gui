@@ -14,12 +14,12 @@ import {
 @Component({
   selector: 'app-brands',
   templateUrl: './brands.component.html',
-  styleUrls: ['./brands.component.scss']
+  styleUrls: ['./brands.component.scss'],
 })
 export class BrandsComponent implements OnInit {
-
   public error: boolean = false;
   public brands: BrandDTO[] = [];
+  public isLoading: boolean = true;
 
   @ViewChild('editor')
   private editor?: ElementRef;
@@ -35,7 +35,10 @@ export class BrandsComponent implements OnInit {
 
   ngOnInit(): void {
     this.brandService.getAllBrandsUsingGET().subscribe(
-      (res) => (this.brands = res),
+      (res) => {
+        this.brands = res;
+        this.isLoading = false;
+      },
       () => (this.error = true)
     );
   }
@@ -101,5 +104,4 @@ export class BrandsComponent implements OnInit {
   public isSelected(brand: BrandDTO): boolean {
     return this.managerService.lastSelected === brand;
   }
-
 }

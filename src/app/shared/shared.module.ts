@@ -1,3 +1,4 @@
+import { LottieModule } from 'ngx-lottie';
 import { TextWithLabelEditableComponent } from './components/text-with-label-editable/text-with-label-editable.component';
 import { TextWithLabelComponent } from './components/text-with-label/text-with-label.component';
 import { InputComponent } from './components/input/input.component';
@@ -14,6 +15,7 @@ import { ErrorBannerComponent } from './components/error-banner/error-banner.com
 import { AttributeViewComponent } from './components/attribute-view/attribute-view.component';
 import { AttributeEntryViewComponent } from './components/attribute-entry-view/attribute-entry-view.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +31,9 @@ import { SearchInputComponent } from './components/search-input/search-input.com
     AttributeViewComponent,
     AttributeEntryViewComponent,
     SearchInputComponent,
+    LoadingComponent,
   ],
-  imports: [CommonModule, FlexLayoutModule, MaterialModule],
+  imports: [CommonModule, FlexLayoutModule, MaterialModule, LottieModule],
   exports: [
     OnhoverClassDirective,
     CarouselComponent,
@@ -44,6 +47,7 @@ import { SearchInputComponent } from './components/search-input/search-input.com
     AttributeViewComponent,
     AttributeEntryViewComponent,
     SearchInputComponent,
+    LoadingComponent,
   ],
 })
 export class SharedModule {}

@@ -14,12 +14,12 @@ import {
 @Component({
   selector: 'app-shops',
   templateUrl: './shops.component.html',
-  styleUrls: ['./shops.component.scss']
+  styleUrls: ['./shops.component.scss'],
 })
 export class ShopsComponent implements OnInit {
-
   public error: boolean = false;
   public shops: ShopDTO[] = [];
+  public isLoading: boolean = true;
 
   @ViewChild('editor')
   private editor?: ElementRef;
@@ -35,7 +35,10 @@ export class ShopsComponent implements OnInit {
 
   ngOnInit(): void {
     this.shopService.getAllShopsUsingGET().subscribe(
-      (res) => (this.shops = res),
+      (res) => {
+        this.shops = res;
+        this.isLoading = false;
+      },
       () => (this.error = true)
     );
   }

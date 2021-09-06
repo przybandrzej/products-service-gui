@@ -11,21 +11,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ApiModule, Configuration } from './pms-products-sdk';
 import { environment } from 'src/environments/environment';
-import { MenuComponent } from './menu/menu.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { LottieModule, LottieCacheModule } from 'ngx-lottie';
 
 export function getAPIConfiguration() {
   return new Configuration({ basePath: environment.api_url });
 }
 
+export function playerFactory() {
+  return import('lottie-web/build/player/lottie_svg');
+}
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    MenuComponent,
-    SideMenuComponent,
-    ToolbarComponent,
-  ],
+  declarations: [AppComponent, SideMenuComponent, ToolbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,6 +34,8 @@ export function getAPIConfiguration() {
     FlexLayoutModule,
     ApiModule.forRoot(getAPIConfiguration),
     SharedModule,
+    LottieModule.forRoot({ player: playerFactory }),
+    LottieCacheModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -30,6 +30,15 @@
     opacity: 1;
     transform: translate(-50%, -50%);
   }
+
+  app-loading {
+    max-width: 25%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .overlay.show {

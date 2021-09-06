@@ -14,12 +14,12 @@ import {
 @Component({
   selector: 'app-currencies',
   templateUrl: './currencies.component.html',
-  styleUrls: ['./currencies.component.scss']
+  styleUrls: ['./currencies.component.scss'],
 })
 export class CurrenciesComponent implements OnInit {
-
   public error: boolean = false;
   public currencies: CurrencyDTO[] = [];
+  public isLoading: boolean = true;
 
   @ViewChild('editor')
   private editor?: ElementRef;
@@ -35,7 +35,10 @@ export class CurrenciesComponent implements OnInit {
 
   ngOnInit(): void {
     this.currencieservice.getAllCurrenciesUsingGET().subscribe(
-      (res) => (this.currencies = res),
+      (res) => {
+        this.currencies = res;
+        this.isLoading = false;
+      },
       () => (this.error = true)
     );
   }

@@ -20,6 +20,7 @@ import {
 export class CategoriesPageComponent implements OnInit, AfterViewInit {
   public error: boolean = false;
   public categories: CategoryDTO[] = [];
+  public isLoading: boolean = true;
 
   @ViewChild('editor')
   private editor?: ElementRef;
@@ -35,7 +36,10 @@ export class CategoriesPageComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.categoriesService.getAllCategoriesUsingGET().subscribe(
-      (res) => (this.categories = res),
+      (res) => {
+        this.categories = res;
+        this.isLoading = false;
+      },
       () => (this.error = true)
     );
   }

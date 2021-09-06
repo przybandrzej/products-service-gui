@@ -8,6 +8,14 @@
   >
     <p>{{ statusMessage }}</p>
   </div>
+  <div
+    class="overlay"
+    [class.show]="isLoading"
+    [style.background-color]="'rgba(124, 133, 148, 0.7)'"
+  >
+    <app-loading></app-loading>
+  </div>
+
   <div fxLayout="row" fxLayoutGap="24px">
     <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex>
       <div fxLayout="row" fxLayoutAlign="start stretch" *ngIf="!createMode">

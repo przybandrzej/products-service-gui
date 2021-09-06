@@ -4,7 +4,6 @@ import { CategoryFDTO } from './../../../pms-products-sdk/model/categoryFDTO';
 import { CategoryResourceService } from '../../../pms-products-sdk/api/categoryResource.service';
 import { SelectedCategoryManagerService } from '../services/selected-category-manager.service';
 import { of, Subscription } from 'rxjs';
-import { CategoryDTO } from '../../../pms-products-sdk/model/categoryDTO';
 import {
   Component,
   EventEmitter,
@@ -13,7 +12,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { switchMap, mergeMap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-category-editor',
@@ -30,7 +29,6 @@ export class CategoryEditorComponent implements OnInit, OnDestroy {
       this.createMode = false;
     }
     this.categoryName = this._category.name ?? '';
-    console.log(this._category);
   }
 
   public get category() {
@@ -55,6 +53,7 @@ export class CategoryEditorComponent implements OnInit, OnDestroy {
   public editedName: boolean = false;
   public categoryName: string = '';
   public attributeTypes: AttributeTypeDTO[] = [];
+  public isLoading: boolean = false;
 
   constructor(
     private managerService: SelectedCategoryManagerService,
@@ -67,6 +66,7 @@ export class CategoryEditorComponent implements OnInit, OnDestroy {
       this.managerService.$selectedCategory
         .pipe(
           switchMap((res) => {
+            this.isLoading = true;
             if (res.id) {
               return this.categoryService.getCategoryFullInfoUsingGET(res.id);
             } else {
@@ -76,6 +76,7 @@ export class CategoryEditorComponent implements OnInit, OnDestroy {
         )
         .subscribe((cat) => {
           this.category = cat;
+          this.isLoading = false;
         })
     );
     this.subs.push(
