@@ -1,3 +1,4 @@
+import { SearchResult } from './../../../model/search-result';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
@@ -9,6 +10,9 @@ export class SearchInputComponent {
   @Input()
   public placeholder: string = 'Search...';
 
+  @Input()
+  public searchResults: SearchResult[] = [];
+
   @Output('submit')
   public submitEvent: EventEmitter<string> = new EventEmitter();
 
@@ -16,6 +20,8 @@ export class SearchInputComponent {
   public changeEvent: EventEmitter<string> = new EventEmitter();
 
   public value: string = '';
+
+  public isFocus: boolean = false;
 
   public changedValue(event: Event): void {
     event.stopPropagation();
@@ -33,5 +39,9 @@ export class SearchInputComponent {
     event.stopPropagation();
     console.log("Submit '" + this.value + "'");
     this.submitEvent.emit(this.value);
+  }
+
+  clickResultList(event: Event): void {
+    event.preventDefault();
   }
 }

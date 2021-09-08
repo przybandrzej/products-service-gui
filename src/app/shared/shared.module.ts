@@ -16,6 +16,7 @@ import { AttributeViewComponent } from './components/attribute-view/attribute-vi
 import { AttributeEntryViewComponent } from './components/attribute-entry-view/attribute-entry-view.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { SearchResultMiniatureComponent } from './components/search-result-miniature/search-result-miniature.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { LoadingComponent } from './components/loading/loading.component';
     AttributeEntryViewComponent,
     SearchInputComponent,
     LoadingComponent,
+    SearchResultMiniatureComponent,
   ],
   imports: [CommonModule, FlexLayoutModule, MaterialModule, LottieModule],
   exports: [
@@ -48,6 +50,7 @@ import { LoadingComponent } from './components/loading/loading.component';
     AttributeEntryViewComponent,
     SearchInputComponent,
     LoadingComponent,
+    SearchResultMiniatureComponent,
   ],
 })
 export class SharedModule {}

@@ -21,33 +21,18 @@
     <div
       id="links"
       fxLayout="row"
-      fxLayoutAlign="start center"
+      fxLayoutAlign="start stretch"
       fxLayoutGap="16px"
     >
-      <div
-        fxLayout="column"
-        fxLayoutAlign="center center"
-        onhoverClass="mat-elevation-z6"
-      >
-        <h3>Produkty</h3>
-      </div>
-      <div
-        fxLayout="column"
-        fxLayoutAlign="center center"
-        onhoverClass="mat-elevation-z6"
-      >
-        <h3>Marki</h3>
-      </div>
-      <div
-        fxLayout="column"
-        fxLayoutAlign="center center"
-        onhoverClass="mat-elevation-z6"
-      >
-        <h3>Sklepy</h3>
-      </div>
+      <button mat-button [routerLink]="'/products'">Products</button>
+      <button mat-button [routerLink]="'/brands'">Brands</button>
+      <button mat-button [routerLink]="'/shops'">Shops</button>
     </div>
 
-    <app-search-input></app-search-input>
+    <app-search-input
+      (submit)="searchSubmit($event)"
+      (change)="searchValueChange($event)"
+    ></app-search-input>
   </div>
 
   <div class="cta" fxLayout="row" fxLayoutGap="16px">
@@ -55,6 +40,7 @@
       class="sign-in mat-elevation-z6"
       fxLayout="column"
       fxLayoutAlign="center center"
+      [routerLink]="'/login'"
     >
       <h3>Sign in</h3>
     </div>
@@ -63,6 +49,7 @@
       class="sign-up mat-elevation-z6"
       fxLayout="column"
       fxLayoutAlign="center center"
+      [routerLink]="'/sign-up'"
     >
       <h3>Sign up</h3>
     </div>

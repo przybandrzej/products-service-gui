@@ -1,13 +1,30 @@
-<div class="container" fxLayout="row" fxLayoutAlign="start stretch">
-  <input
-    type="text"
-    name="search"
-    [placeholder]="placeholder"
-    (input)="changedValue($event)"
-    (keyup.enter)="enter($event)"
-    [value]="value"
-  />
-  <button class="btn-search">
-    <i class="fa fa-search"></i>
-  </button>
+<div fxLayout="column">
+  <div class="container" fxLayout="row" fxLayoutAlign="start stretch">
+    <input
+      type="text"
+      name="search"
+      [placeholder]="placeholder"
+      (input)="changedValue($event)"
+      (keyup.enter)="enter($event)"
+      [value]="value"
+      (focus)="isFocus = true"
+      (focusout)="isFocus = false"
+    />
+    <button class="btn-search">
+      <i class="fa fa-search"></i>
+    </button>
+  </div>
+
+  <!-- <div
+    fxLayout="column"
+    class="results"
+    [style.height]="isFocus ? searchResults.length * 64 + 'px' : 0"
+    [style.visibility]="isFocus ? 'visible' : 'hidden'"
+    (mousedown)="clickResultList($event)"
+  >
+    <app-search-result-miniature
+      *ngFor="let result of searchResults"
+      [result]="result"
+    ></app-search-result-miniature>
+  </div> -->
 </div>
